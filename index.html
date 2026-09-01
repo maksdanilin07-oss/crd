@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CRD | Официальный сайт сообщества</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #0a0c10 0%, #0f1117 100%);
+            color: #f1f3f6;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            transition: background 0.3s ease, color 0.2s ease;
+        }
+        .top-banner {
+            background: #ff0033;
+            width: 100%;
+            padding: 12px 28px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+        .banner-row { display: flex; justify-content: space-between; align-items: center; }
+        .menu-icon { cursor: pointer; font-size: 1.8rem; color: white; transition: opacity 0.2s; }
+        .menu-icon:hover { opacity: 0.8; }
+        .right-group { display: flex; align-items: center; gap: 20px; }
+        .theme-switch { display: flex; align-items: center; gap: 10px; }
+        .switch-label { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; color: rgba(255,255,255,0.9); }
+        .switch { position: relative; display: inline-block; width: 52px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000000;
+            transition: 0.3s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 3px;
+            bottom: 3px;
+            background-color: #ff0033;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        input:checked + .slider:before {
+            background-color: #1a66ff;
+            transform: translateX(24px);
+        }
+        h1, .subtitle-center, .section-title span, .section-header span, .nav-plain-text {
+            background: linear-gradient(135deg, #ffffff, #ff99aa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 28px; }
+        .hero { text-align: center; padding: 40px 0 40px; border-bottom: 1px solid rgba(255,255,255,0.08); position: relative; }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0033;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+        .subtitle-center { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; margin: 30px 0 20px 0; text-align: center; }
+        .links-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 20px 0 50px; }
+        .social-btn {
+            border-radius: 60px;
+            padding: 12px 28px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(20, 24, 32, 0.8);
+            backdrop-filter: blur(8px);
+            color: #fff;
+        }
+        .social-btn i { font-size: 1.4rem; }
+        .social-btn[data-platform="youtube"]:hover { background: #ff0000; border-color: #ff0000; transform: translateY(-3px); color: white; }
+        .social-btn[data-platform="telegram"]:hover { background: #26a5e4; border-color: #26a5e4; transform: translateY(-3px); color: white; }
+        .social-btn[data-platform="twitch"]:hover { background: #9146ff; transform: translateY(-3px); color: white; }
+        .social-btn[data-platform="tiktok"]:hover { background: #000000; transform: translateY(-3px); color: white; }
+        .social-btn[data-platform="dzen"]:hover { background: #2a3f54; transform: translateY(-3px); color: white; }
+        .social-btn[data-platform="vk"]:hover { background: #4c75a3; transform: translateY(-3px); color: white; }
+        .featured-slider {
+            position: relative;
+            margin: 30px 0 20px;
+        }
+        .slider-container {
+            overflow: hidden;
+            border-radius: 32px;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .slider-item {
+            flex: 0 0 100%;
+            background: #13161f;
+            border-radius: 32px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.3s, border 0.3s;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+        .slider-btn:hover { background: rgba(0,0,0,0.9); }
+        .slider-btn.prev { left: 10px; }
+        .slider-btn.next { right: 10px; }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .video-wrapper video, .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: contain;
+            background: #000;
+        }
+        .comments-accordion {
+            background: rgba(18, 22, 30, 0.9);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            margin: 20px 0 40px;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+            transition: background 0.3s, border 0.3s;
+        }
+        body.blue-theme .comments-accordion {
+            background: #f8f9fc;
+            border-color: rgba(0,0,0,0.1);
+        }
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.2);
+            transition: background 0.2s;
+        }
+        .comments-header:hover {
+            background: rgba(0,0,0,0.4);
+        }
+        .comments-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .comments-title i { font-size: 1.3rem; color: #ff0033; }
+        body.blue-theme .comments-title i { color: #1a66ff; }
+        .comments-icon i {
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+            color: #ff99aa;
+        }
+        body.blue-theme .comments-icon i { color: #1a66ff; }
+        .comments-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out;
+            background: rgba(0,0,0,0.15);
+        }
+        .comments-content.open {
+            max-height: 480px;
+            padding: 20px 24px;
+        }
+        .chat-frame-wrapper {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .chat-frame-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 16px;
+        }
+        .no-chat-placeholder {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 1.1rem;
+            color: #aaa;
+        }
+        body.blue-theme .no-chat-placeholder { color: #555; }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-header { display: flex; align-items: center; gap: 12px; margin: 40px 0 20px 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+        .section-header i { font-size: 1.4rem; transition: color 0.2s; }
+        .youtube-grid, .telegram-grid, .publications-grid, .streams-grid, .shorts-grid, .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .feed-card {
+            border-radius: 28px;
+            padding: 20px;
+            transition: transform 0.25s ease, box-shadow 0.25s, background 0.3s, border 0.3s;
+            background: rgba(18, 22, 30, 0.9);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .feed-card:hover { transform: translateY(-6px); border-color: #ff0033; box-shadow: 0 20px 30px -10px rgba(255, 0, 51, 0.4); background: rgba(25, 30, 40, 0.95); }
+        .feed-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .channel-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #ff99aa; background: #1e1e2a; transition: border-color 0.2s; }
+        .channel-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
+        .channel-title small { font-size: 0.8rem; font-weight: normal; margin-left: 6px; color: #ff99aa; }
+        .feed-list { list-style: none; }
+        .feed-list li { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .feed-list a { text-decoration: none; font-weight: 500; display: block; transition: color 0.2s; color: #eef2ff; }
+        .feed-list a:hover { color: #ff4d6d; }
+        .feed-date { font-size: 0.7rem; margin-top: 5px; display: block; color: #8e95ab; }
+        .error-placeholder { font-size: 0.9rem; padding: 12px 0; color: #ff99aa; }
+        .footer { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; font-size: 0.85rem; color: #ffffff; transition: color 0.3s, border-color 0.3s; }
+        body.blue-theme {
+            background: #ffffff;
+            color: #1e1f2a;
+        }
+        body.blue-theme .top-banner { background: #1a66ff; }
+        body.blue-theme .switch-label { color: #ffffff; }
+        body.blue-theme h1, body.blue-theme .subtitle-center, body.blue-theme .section-title span, body.blue-theme .section-header span, body.blue-theme .nav-plain-text {
+            background: linear-gradient(135deg, #1a66ff, #3399ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        body.blue-theme .section-header i { color: #1a66ff; }
+        body.blue-theme .footer { color: #000000; border-top-color: rgba(0,0,0,0.1); }
+        body.blue-theme .bio { color: #2c2e3a; }
+        body.blue-theme .feed-card { background: #f8f9fc; border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
+        body.blue-theme .feed-card:hover { border-color: #1a66ff; box-shadow: 0 20px 30px -10px rgba(26, 102, 255, 0.3); background: #ffffff; }
+        body.blue-theme .feed-header { border-bottom-color: rgba(0,0,0,0.08); }
+        body.blue-theme .channel-title { color: #111; }
+        body.blue-theme .channel-title small { color: #1a66ff; }
+        body.blue-theme .feed-list a { color: #1e1f2a; }
+        body.blue-theme .feed-list a:hover { color: #1a66ff; }
+        body.blue-theme .feed-date { color: #5a5e73; }
+        body.blue-theme .error-placeholder { color: #1a66ff; }
+        body.blue-theme .slider-item { background: #f0f2f8; border-color: rgba(0,0,0,0.05); }
+        body.blue-theme .social-btn {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.15);
+            color: #ffffff !important;
+        }
+        body.blue-theme .social-btn i { color: #ffffff !important; }
+        body.blue-theme .avatar { border: 3px solid #1a66ff !important; }
+        body.blue-theme .feed-card .channel-avatar { border: 2px solid #1a66ff !important; }
+        body.blue-theme .playlist-content { background: #000000 !important; }
+        body.blue-theme .accordion-title { color: #ffffff; }
+        body.blue-theme .track-title { color: #ffffff; }
+        body.blue-theme .track-source { color: #cccccc; }
+        body.blue-theme .track-duration { color: #cccccc; }
+        body.blue-theme .playlist-header h2 { color: #ffffff; }
+        body.blue-theme .playlist-description { color: #cccccc; }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
+            z-index: 998;
+            display: none;
+        }
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: #0c0e13;
+            z-index: 999;
+            transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 4px 0 30px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .side-menu.open { left: 0; }
+        .side-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 24px 16px 24px; }
+        .nav-plain-text { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        .close-menu {
+            cursor: pointer;
+            font-size: 1.6rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        .menu-divider { margin: 0 20px 20px 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        .menu-items { display: flex; flex-direction: column; gap: 4px; padding: 0 8px 20px 8px; flex: 1; }
+        .menu-item {
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 14px;
+            margin: 0 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            color: #f0f2fa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .special-menu-item {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-top: 12px;
+            text-align: center;
+            justify-content: center;
+        }
+        .special-menu-item:hover {
+            background: linear-gradient(90deg, #ff0033 50%, #1a66ff 50%);
+            color: #ffffff;
+            transform: translateX(4px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-color: transparent;
+        }
+        .menu-item:not(.special-menu-item):hover {
+            background: #ff0033;
+            color: #ffffff;
+            transform: translateX(4px);
+            box-shadow: 0 4px 10px rgba(255,0,51,0.3);
+        }
+        body.blue-theme .side-menu { background: #ffffff; border-right-color: rgba(0,0,0,0.1); }
+        body.blue-theme .menu-item:not(.special-menu-item) { color: #1e1f2a; }
+        body.blue-theme .menu-item:not(.special-menu-item):hover { background: #1a66ff; color: white; }
+        body.blue-theme .close-menu { background: rgba(0,0,0,0.05); color: #111; }
+        body.blue-theme .close-menu:hover { background: #1a66ff; color: white; }
+        body.blue-theme .menu-divider { border-top-color: rgba(0,0,0,0.15); }
+        body.blue-theme .special-menu-item { border-color: rgba(0,0,0,0.2); color: #1e1f2a; }
+        body.blue-theme .special-menu-item:hover { background: linear-gradient(90deg, #ff0033 50%, #1a66ff 50%); color: white; }
+        .about-content, .rise-content, .playlist-content, .schedule-content, .feedback-content {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .about-content { background: #0a0c10; }
+        body.blue-theme .about-content { background: #ffffff; }
+        .rise-content { background: #000000 !important; text-align: center; }
+        .playlist-content { background: #000000 !important; }
+        .schedule-content { background: #0a0c10; }
+        body.blue-theme .schedule-content { background: #ffffff; }
+        .feedback-content { background: #0a0c10; }
+        body.blue-theme .feedback-content { background: #ffffff; }
+        .about-card, .schedule-card-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(18, 22, 30, 0.9);
+            border-radius: 32px;
+            padding: 40px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+        body.blue-theme .about-card, body.blue-theme .schedule-card-container { background: #f8f9fc; border-color: rgba(0,0,0,0.1); }
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ff0033, #1a66ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .about-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; color: #eef2ff; }
+        body.blue-theme .about-text { color: #1e1f2a; }
+        .about-channels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .channel-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        body.blue-theme .channel-card { background: rgba(0,0,0,0.05); }
+        .channel-card i { font-size: 2.5rem; margin-bottom: 15px; }
+        .channel-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .social-links-about {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .social-links-about a { color: #fff; font-size: 1.8rem; transition: transform 0.2s; }
+        body.blue-theme .social-links-about a { color: #1e1f2a; }
+        .social-links-about a:hover { transform: scale(1.1); }
+        .contact-line {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 1rem;
+        }
+        body.blue-theme .contact-line { border-top-color: rgba(0,0,0,0.1); }
+        .contact-line a { color: #ff0033; text-decoration: none; font-weight: 500; }
+        body.blue-theme .contact-line a { color: #1a66ff; }
+        .schedule-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        body.blue-theme .schedule-card { background: rgba(0,0,0,0.05); }
+        .schedule-day {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ff0033;
+        }
+        body.blue-theme .schedule-day { color: #1a66ff; }
+        .schedule-time { font-size: 2rem; font-weight: 800; margin: 10px 0; }
+        .schedule-label { font-size: 0.9rem; opacity: 0.8; }
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            border-radius: 28px;
+            padding: 30px;
+        }
+        body.blue-theme .feedback-form { background: rgba(0,0,0,0.05); }
+        .feedback-form input, .feedback-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.5);
+            color: inherit;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        body.blue-theme .feedback-form input, body.blue-theme .feedback-form textarea {
+            background: #fff;
+            border-color: rgba(0,0,0,0.2);
+        }
+        .feedback-form button {
+            background: #ff0033;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        body.blue-theme .feedback-form button { background: #1a66ff; }
+        .feedback-form button:hover { opacity: 0.9; }
+        .playlist-container { max-width: 1200px; margin: 0 auto; }
+        .playlist-header { text-align: left; margin-bottom: 20px; }
+        .playlist-header h2 { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 15px; }
+        .playlist-divider { height: 1px; background: #333; margin: 15px 0 25px 0; }
+        .playlist-description { color: #ccc; font-size: 1.1rem; margin-bottom: 30px; }
+        .accordion-item {
+            background: rgba(20,20,30,0.7);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.2s;
+        }
+        .accordion-header:hover { background: rgba(0,0,0,0.5); }
+        .accordion-title { font-size: 1.3rem; font-weight: 600; color: #fff; }
+        .accordion-icon { font-size: 1.2rem; color: #ff0033; transition: transform 0.2s; }
+        .accordion-content {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-content.open { max-height: 500px; padding: 20px 24px; }
+        .track-list { width: 100%; border-collapse: collapse; }
+        .track-list tr { border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s; }
+        .track-list tr:hover { background: rgba(255,255,255,0.05); }
+        .track-list td { padding: 12px 8px; vertical-align: middle; }
+        .track-play { width: 40px; text-align: center; font-size: 1.2rem; color: #ff0033; cursor: pointer; }
+        .track-title { font-weight: 500; color: inherit; }
+        .track-source { font-size: 0.8rem; color: #aaa; }
+        .track-duration { text-align: right; font-size: 0.85rem; color: #aaa; white-space: nowrap; }
+        .floating-music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 12px 16px;
+            width: 380px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        body.blue-theme .floating-music-player { background: rgba(255,255,255,0.85); border-color: rgba(0,0,0,0.2); }
+        .floating-music-player.collapsed { width: 56px; padding: 12px; }
+        .floating-music-player.collapsed .player-controls, .floating-music-player.collapsed .player-progress { display: none; }
+        .player-collapse-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #ff0033;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.blue-theme .player-collapse-btn { color: #1a66ff; }
+        .player-controls { display: flex; align-items: center; gap: 8px; margin-right: 28px; }
+        .player-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #ff0033;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.blue-theme .player-btn { color: #1a66ff; }
+        .player-info { flex: 1; min-width: 0; margin: 0 4px; }
+        .player-track-name { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff; }
+        body.blue-theme .player-track-name { color: #000; }
+        .player-track-source {
+            font-size: 0.7rem;
+            color: #ff0033;
+            cursor: pointer;
+            text-decoration: underline;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        body.blue-theme .player-track-source { color: #1a66ff; }
+        .player-progress { margin-top: 6px; }
+        .progress-bar { width: 100%; height: 4px; -webkit-appearance: none; background: rgba(255,255,255,0.2); border-radius: 2px; cursor: pointer; }
+        .progress-bar::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #ff0033; }
+        body.blue-theme .progress-bar::-webkit-slider-thumb { background: #1a66ff; }
+        .time-info { display: flex; justify-content: space-between; font-size: 0.65rem; color: #ccc; margin-top: 4px; }
+        body.blue-theme .time-info { color: #555; }
+        .corner-arrow {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: rgba(255,51,51,0.9);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .corner-arrow:hover { transform: scale(1.1); background: #ff0033; }
+        body.blue-theme .corner-arrow { background: #1a66ff; }
+        body.blue-theme .corner-arrow:hover { background: #3399ff; }
+        .rise-header-top { margin-bottom: 40px; }
+        .rise-header-top h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff0033, #1a66ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            display: inline-block;
+            padding: 0 20px;
+        }
+        .rise-telegram-link-large {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: linear-gradient(135deg, #1a66ff, #26a5e4);
+            padding: 16px 36px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin: 0 auto 40px auto;
+            width: fit-content;
+        }
+        .rise-telegram-link-large i { font-size: 2rem; color: white; }
+        .rise-telegram-link-large:hover { transform: scale(1.02); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+        .soon-text { font-size: 2rem; font-weight: 800; letter-spacing: 3px; color: #ffffff; text-align: center; margin-top: 40px; }
+        @media (max-width: 700px) {
+            .rise-header-top h2 { font-size: 2rem; }
+            .rise-telegram-link-large { font-size: 1.2rem; padding: 12px 24px; gap: 12px; }
+            .soon-text { font-size: 1.4rem; }
+            .floating-music-player { width: 320px; }
+            .comments-content.open { max-height: 520px; }
+            .chat-frame-wrapper iframe { height: 320px; }
+        }
+
+        /* ===== ТЕМА ХЭЛЛОУИН ===== */
+        body.halloween-theme {
+            background: linear-gradient(145deg, #2a1b0e 0%, #1f0f05 100%);
+            color: #ffdd99;
+        }
+        body.halloween-theme .top-banner { background: #ff8c00; }
+        body.halloween-theme .social-btn, body.halloween-theme .feed-card {
+            border-color: #ff8c00;
+            background: rgba(0,0,0,0.5);
+        }
+        body.halloween-theme .avatar { border-color: #ff8c00; }
+        body.halloween-theme .section-header i { color: #ff8c00; }
+        body.halloween-theme .menu-item:hover { background: #ff8c00; }
+        body.halloween-theme .hero::before {
+            content: "🕷️";
+            font-size: 3rem;
+            opacity: 0.3;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+            pointer-events: none;
+        }
+        body.halloween-theme .hero::after {
+            content: "🕸️";
+            font-size: 4rem;
+            opacity: 0.2;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            pointer-events: none;
+        }
+
+        /* ===== ТЕМА НОВЫЙ ГОД ===== */
+        body.newyear-theme {
+            background: linear-gradient(145deg, #0a2f44 0%, #041c2c 100%);
+            color: #e0f7ff;
+        }
+        body.newyear-theme .top-banner { background: #d32f2f; }
+        body.newyear-theme .social-btn, body.newyear-theme .feed-card {
+            border-color: #00bcd4;
+            background: rgba(0,0,0,0.5);
+        }
+        body.newyear-theme .avatar { border-color: #ffd700; }
+        body.newyear-theme .section-header i { color: #ffd700; }
+        body.newyear-theme .menu-item:hover { background: #00bcd4; }
+        body.newyear-theme .hero::before {
+            content: "🎄";
+            font-size: 3rem;
+            opacity: 0.4;
+            position: absolute;
+            left: 20px;
+            top: 80px;
+            pointer-events: none;
+        }
+        body.newyear-theme .hero::after {
+            content: "🎁";
+            font-size: 3rem;
+            opacity: 0.4;
+            position: absolute;
+            right: 20px;
+            bottom: 30px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div class="top-banner">
+    <div class="banner-row">
+        <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+        <div class="right-group">
+            <div class="theme-switch">
+                <span class="switch-label">Тема</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Плавающий плеер -->
+<div class="floating-music-player" id="floatingPlayer">
+    <button class="player-collapse-btn" id="collapsePlayerBtn"><i class="fas fa-chevron-down"></i></button>
+    <div class="player-controls">
+        <button class="player-btn" id="prevTrackBtn"><i class="fas fa-step-backward"></i></button>
+        <button class="player-btn" id="musicPlayerBtn"><i class="fas fa-play"></i></button>
+        <button class="player-btn" id="nextTrackBtn"><i class="fas fa-step-forward"></i></button>
+        <div class="player-info">
+            <div class="player-track-name" id="currentTrackName">Не выбрано</div>
+            <div class="player-track-source" id="currentTrackSource">—</div>
+        </div>
+    </div>
+    <div class="player-progress">
+        <input type="range" class="progress-bar" id="progressBar" value="0" step="0.01">
+        <div class="time-info"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+    </div>
+</div>
+<audio id="bgMusic"></audio>
+<a href="#" class="corner-arrow" id="cornerArrow"><i class="fas fa-arrow-right"></i></a>
+
+<div class="overlay" id="overlay"></div>
+<div class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+        <div class="nav-plain-text">НАВИГАЦИЯ</div>
+        <div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div>
+    </div>
+    <div class="menu-divider"></div>
+    <div class="menu-items">
+        <a href="#" class="menu-item" data-page="main">Главная</a>
+        <a href="#publications" class="menu-item" data-page="main">Публикации</a>
+        <a href="#streams" class="menu-item" data-page="main">Стримы</a>
+        <a href="#shorts" class="menu-item" data-page="main">Короткие видео</a>
+        <a href="#" class="menu-item" data-page="about">О себе</a>
+        <a href="#" class="menu-item" data-page="schedule">Расписание</a>
+        <a href="#" class="menu-item" data-page="feedback">Отзывы и предложения</a>
+        <a href="#" class="menu-item" data-page="playlist">CRD:Плейлист</a>
+        <a href="#" class="menu-item special-menu-item" data-page="rise">ВОССТАНИЕ!</a>
+        <a href="admin.html" class="menu-item" target="_blank">🔧 Админ-панель</a>
+    </div>
+</div>
+
+<!-- Основной контент -->
+<div class="container" id="mainContent">
+    <div class="hero">
+        <img class="avatar" src="https://yt3.googleusercontent.com/ytc/APkrFKY2u2i-cZrWz1YhTKkMN_10WrwNtHGFfFkER2cK=s900-c-k-c0x00ffffff-no-rj" alt="Куренд">
+        <h1>Официальный сайт сообщества CRD</h1>
+        <div class="bio">Добро пожаловать! Это сообщество владельца канала Куренд, оно создано для удобного слежения за обновлениями разных каналов. Всё самое свежее — будет здесь.</div>
+    </div>
+    <div class="subtitle-center">Все видео, посты и стримы — можно найти тут:</div>
+    <div class="links-grid" id="socialLinksContainer"></div>
+    
+    <!-- Слайдер -->
+    <div class="featured-slider">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slider-item">
+                    <div class="section-title"><i class="fas fa-video"></i> <span>Трейлер / Интро</span></div>
+                    <div class="video-wrapper">
+                        <video controls poster="https://img.youtube.com/vi/7jmoAl6vi2E/maxresdefault.jpg" preload="metadata">
+                            <source src="https://atbedbquwiltfics.public.blob.vercel-storage.com/%D0%98%D0%BD%D1%82%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B9%20%D0%BF%D0%BE%D0%BB%D0%BE%D0%B2%D0%B8%D0%BD%D1%8B%202026%20%D0%B3%D0%BE%D0%B4%D0%B0%20%5Bget.gt%5D.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="section-title"><i class="fab fa-youtube"></i> <span>Прямой эфир YouTube</span></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UClfF0VgZ5WFNhwbCzjfDtDg" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="section-title"><i class="fab fa-twitch"></i> <span>Прямой эфир Twitch</span></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.twitch.tv/?channel=curendplayground&parent=localhost&parent=127.0.0.1&autoplay=false" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Блок комментариев прямого эфира -->
+    <div class="comments-accordion" id="commentsAccordion">
+        <div class="comments-header" id="commentsHeader">
+            <span class="comments-title"><i class="fas fa-comments"></i> Комментарии прямого эфира</span>
+            <span class="comments-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="comments-content" id="commentsContent">
+            <div id="youtubeChatBlock" style="display: none;">
+                <div class="chat-frame-wrapper">
+                    <iframe src="https://www.youtube.com/live_chat?channel=UClfF0VgZ5WFNhwbCzjfDtDg&embed_domain=localhost&embed_domain=127.0.0.1" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div id="twitchChatBlock" style="display: none;">
+                <div class="chat-frame-wrapper">
+                    <iframe src="https://www.twitch.tv/embed/curendplayground/chat?parent=localhost&parent=127.0.0.1" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div id="noChatBlock" class="no-chat-placeholder">
+                <i class="fas fa-comment-slash"></i> Чат недоступен для этого видео (трейлер / интро)
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header"><i class="fab fa-youtube"></i><span>YOUTUBE | КАНАЛЫ — ПОСЛЕДНИЕ ВИДЕО</span></div>
+    <div class="youtube-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRend|Куренд <small>основной</small></div></div><ul class="feed-list" id="youtubeFeedMain"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@sgcurend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRendPLAY <small>второй канал</small></div></div><ul class="feed-list" id="youtubeFeedSecondary"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@curend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div>
+    </div>
+    <div class="section-header"><i class="fab fa-telegram"></i><span>TELEGRAM | КАНАЛЫ</span></div>
+    <div class="telegram-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Режиссёрская Куренда <small>блог</small></div></div><ul class="feed-list" id="telegramFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/SGCuRend" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Паутина Новостей! <small>гик-новости</small></div></div><ul class="feed-list" id="telegramFeedCrd"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/crdwebnews" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
+    </div>
+    <div id="publications" class="section-header"><i class="fas fa-newspaper"></i><span>ПУБЛИКАЦИИ</span></div>
+    <div class="publications-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" id="dzenAvatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Zen_logo_icon.svg/3840px-Zen_logo_icon.svg.png"><div class="channel-title">Geek Digest <small>статьи</small></div></div><ul class="feed-list" id="dzenFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка статей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://dzen.ru/geekdigest" target="_blank" class="social-btn" data-platform="dzen" style="background:#2a3f54;padding:8px 20px;gap:8px"><i class="fas fa-newspaper"></i> Перейти в Дзен</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/145/145813.png"><div class="channel-title">Что, если...Куренд в ВК? <small>сообщество</small></div></div><ul class="feed-list" id="vkFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка записей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://vk.com/sgcurend" target="_blank" class="social-btn" data-platform="vk" style="background:#4c75a3;padding:8px 20px;gap:8px"><i class="fab fa-vk"></i> Перейти в сообщество</a></div></div>
+    </div>
+    <div id="streams" class="section-header"><i class="fas fa-video"></i><span>СТРИМЫ</span></div>
+    <div class="streams-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://img.magnific.com/premium-vector/vector-twitch-social-media-logo_1093524-449.jpg?semt=ais_hybrid" style="width:64px;height:64px;object-fit:cover"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">curendplayground</div><div class="channel-title"><small style="font-size:0.9rem">стримы</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.twitch.tv/curendplayground" target="_blank" class="social-btn" data-platform="twitch" style="background:#9146ff;padding:12px 28px;gap:12px"><i class="fab fa-twitch"></i> Смотреть на Twitch</a></div></div></div>
+    <div id="shorts" class="section-header"><i class="fab fa-tiktok"></i><span>КОРОТКИЕ ВИДЕО</span></div>
+    <div class="shorts-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" style="width:64px;height:64px"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">CuRend в TikTok</div><div class="channel-title"><small style="font-size:0.9rem">короткие видео</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.tiktok.com/@_maxcrd_" target="_blank" class="social-btn" data-platform="tiktok" style="background:#000000; padding:12px 28px; gap:12px;"><i class="fab fa-tiktok"></i> Открыть профиль</a></div></div></div>
+    <div class="footer"><i class="fab fa-youtube"></i> CRD · Все обновления сообщества в одном месте · Подписывайся! и не пропускай новое</div>
+</div>
+
+<!-- Страница "О себе" -->
+<div class="container about-content" id="aboutContent"><div class="about-card"><h2 class="about-title">🕷️ О себе</h2><div class="about-text"><p>Меня зовут <strong>Куренд (Макс)</strong>. Я создаю в основном паучий контент, но иногда на втором канале тянет пройти какой-нибудь другой жанр. Люблю делиться мыслями, блогами, анонсами, обложками к видео и моментами со съёмок. Всё это выражено в прохождениях и обзорах.</p><br><p>Создал специальный сайт, который я назвал сокращённо CRD, как аббревиатура моего бренда. В нём вы найдёте всё, что я делаю — от основного YouTube-канала до эксклюзивов в Telegram и других соцсетях. Увидимся!</p></div><div class="about-channels"><div class="channel-card"><i class="fab fa-youtube" style="color:#ff0033;"></i><h3>YouTube</h3><p><strong>CuRend|Куренд</strong> — основной канал</p><p><strong>CuRendPLAY</strong> — второй канал</p></div><div class="channel-card"><i class="fab fa-telegram" style="color:#26a5e4;"></i><h3>Telegram</h3><p><strong>Режиссёрская Куренда</strong> — блог</p><p><strong>Паутина Новостей!</strong> — гик-новости</p></div><div class="channel-card"><i class="fab fa-twitch" style="color:#9146ff;"></i><h3>Twitch</h3><p>curendplayground — стримы</p></div><div class="channel-card"><i class="fab fa-tiktok"></i><h3>TikTok</h3><p>CuRend в TikTok — короткие видео</p></div><div class="channel-card"><i class="fab fa-vk" style="color:#4c75a3;"></i><h3>ВКонтакте</h3><p>Что, если...Куренд в ВК? — сообщество</p></div><div class="channel-card"><i class="fas fa-newspaper"></i><h3>Дзен</h3><p>Geek Digest — статьи</p></div></div><div class="social-links-about"><a href="https://youtube.com/@sgcurend" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://t.me/SGCuRend" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://www.twitch.tv/curendplayground" target="_blank"><i class="fab fa-twitch"></i></a><a href="https://www.tiktok.com/@_maxcrd_" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://vk.com/sgcurend" target="_blank"><i class="fab fa-vk"></i></a><a href="https://dzen.ru/geekdigest" target="_blank"><i class="fas fa-newspaper"></i></a></div><div class="contact-line">по вопросам (ВК): <a href="https://vk.com/crdik" target="_blank">https://vk.com/crdik</a></div></div></div>
+
+<!-- Страница "Расписание" -->
+<div class="container schedule-content" id="scheduleContent"><div class="schedule-card-container"><h2 class="about-title"><i class="far fa-calendar-alt"></i> Расписание</h2><div class="schedule-grid" id="scheduleGrid"></div></div></div>
+
+<!-- Страница "Отзывы и предложения" -->
+<div class="container feedback-content" id="feedbackContent"><div class="schedule-card-container"><h2 class="about-title">💬 Отзывы и предложения</h2><form id="feedbackForm" class="feedback-form" action="https://formsubmit.co/ofitswebsite.crd@mail.ru" method="POST"><input type="hidden" name="_subject" value="Новый отзыв с сайта CRD"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://crd-site.ru/thanks.html"><input type="text" name="_honey" style="display:none"><input type="text" name="Имя" placeholder="Ваше имя (опционально)" id="fbName"><textarea name="Сообщение" rows="4" placeholder="Напишите отзыв или предложение..." id="fbMessage" required></textarea><button type="submit">Отправить</button></form><div id="fbStatus" style="text-align:center; margin-top:20px; font-size:0.9rem;"></div></div></div>
+
+<!-- Страница "Восстание!" -->
+<div class="container rise-content" id="riseContent"><div class="rise-header-top"><h2>🕸️ ВОССТАНИЕ! 🕸️</h2></div><a href="https://t.me/thelairscarletkaracurt" target="_blank" class="rise-telegram-link-large"><i class="fab fa-telegram"></i> CRDTV</a><div class="soon-text">СКОРО ДОБАВИТСЯ</div></div>
+
+<!-- Страница "CRD:Плейлист" с исправленными длительностями -->
+<div class="container playlist-content" id="playlistContent">
+    <div class="playlist-container">
+        <div class="playlist-header"><h2>РАЗДЕЛ "CRD:ПЛЕЙЛИСТ"</h2><div class="playlist-divider"></div></div>
+        <div class="playlist-description">тут собраны все музыкальные произведения от интро до всех песен вселенной <u>Восставших</u></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="intro"><span class="accordion-title">Тематические ИНТРО</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-intro"><table class="track-list">
+            <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Clean%20Remaster%20%28Minimal%20Change%29%20%281%29.mp3" data-title="Интро" data-source="Тематические ИНТРО" data-duration="178"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:58</td></tr>
+            <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Blacklist%20Entry%20v2.mp3" data-title="Тёмное интро" data-source="Тематические ИНТРО" data-duration="162"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Тёмное интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:42</td></tr>
+            <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Christmas%20Nostalgia%20Bounce%20%28Instrumental%29.mp3" data-title="Новогоднее интро" data-source="Тематические ИНТРО" data-duration="209"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Новогоднее интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">3:29</td></tr>
+            <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Darker%20Halloween%20with%20Laughter.mp3" data-title="Хэллоуинское интро" data-source="Тематические ИНТРО" data-duration="174"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Хэллоуинское интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:54</td></tr>
+        </table></div></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="scarlet"><span class="accordion-title">Алый Каракурт</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-scarlet"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="devil"><span class="accordion-title">Дьявол</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-devil"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="moon"><span class="accordion-title">Лунный Воин</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-moon"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="mercs"><span class="accordion-title">Наемники</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-mercs"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="rise"><span class="accordion-title">Восставшие</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-rise"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
+    </div>
+</div>
+
+<script>
+    // --- Тема (обычная синяя/красная) ---
+    const themeToggle = document.getElementById('themeToggle');
+    if (localStorage.getItem('crdTheme') === 'blue') { themeToggle.checked = true; document.body.classList.add('blue-theme'); }
+    themeToggle.addEventListener('change', function() { if(this.checked) { document.body.classList.add('blue-theme'); localStorage.setItem('crdTheme', 'blue'); } else { document.body.classList.remove('blue-theme'); localStorage.setItem('crdTheme', 'red'); } });
+
+    // --- Меню и навигация ---
+    const menuIcon = document.getElementById('menuIcon'), overlay = document.getElementById('overlay'), sideMenu = document.getElementById('sideMenu'), closeMenuBtn = document.getElementById('closeMenu');
+    function openMenu() { sideMenu.classList.add('open'); overlay.style.display = 'block'; document.body.style.overflow = 'hidden'; }
+    function closeMenuFunc() { sideMenu.classList.remove('open'); overlay.style.display = 'none'; document.body.style.overflow = ''; }
+    menuIcon.addEventListener('click', openMenu); closeMenuBtn.addEventListener('click', closeMenuFunc); overlay.addEventListener('click', closeMenuFunc);
+    const mainContent = document.getElementById('mainContent'), aboutContent = document.getElementById('aboutContent'), riseContent = document.getElementById('riseContent'), playlistContent = document.getElementById('playlistContent'), scheduleContent = document.getElementById('scheduleContent'), feedbackContent = document.getElementById('feedbackContent');
+    const menuItems = document.querySelectorAll('.menu-item'), cornerArrow = document.getElementById('cornerArrow');
+    function showMain() { mainContent.style.display = 'block'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showAbout() { mainContent.style.display = 'none'; aboutContent.style.display = 'block'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showRise() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'block'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showPlaylist() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'block'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showSchedule() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'block'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showFeedback() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'block'; closeMenuFunc(); }
+    menuItems.forEach(item => { item.addEventListener('click', (e) => { e.preventDefault(); const page = item.getAttribute('data-page'); if (page === 'rise') showRise(); else if (page === 'about') showAbout(); else if (page === 'playlist') showPlaylist(); else if (page === 'schedule') showSchedule(); else if (page === 'feedback') showFeedback(); else { showMain(); if (item.getAttribute('href') && item.getAttribute('href') !== '#') { const targetId = item.getAttribute('href').substring(1); const targetElement = document.getElementById(targetId); if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } }); });
+    cornerArrow.addEventListener('click', (e) => { e.preventDefault(); showAbout(); });
+    showMain();
+
+    // --- Аудиоплеер ---
+    const audio = document.getElementById('bgMusic'), playPauseBtn = document.getElementById('musicPlayerBtn'), prevBtn = document.getElementById('prevTrackBtn'), nextBtn = document.getElementById('nextTrackBtn'), progressBar = document.getElementById('progressBar'), currentTimeSpan = document.getElementById('currentTime'), durationSpan = document.getElementById('duration'), trackNameSpan = document.getElementById('currentTrackName'), trackSourceSpan = document.getElementById('currentTrackSource');
+    let currentTracksList = [], currentTrackIndex = -1;
+    const floatingPlayer = document.getElementById('floatingPlayer'), collapseBtn = document.getElementById('collapsePlayerBtn');
+    collapseBtn.addEventListener('click', () => { floatingPlayer.classList.toggle('collapsed'); const icon = collapseBtn.querySelector('i'); if (floatingPlayer.classList.contains('collapsed')) { icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } else { icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } });
+    function formatTime(seconds) { if (isNaN(seconds)) return '0:00'; const mins = Math.floor(seconds/60), secs = Math.floor(seconds%60); return `${mins}:${secs<10?'0':''}${secs}`; }
+    function updatePlayerInfo(title, source, durationSec) { trackNameSpan.textContent = title || 'Не выбрано'; trackSourceSpan.textContent = source || '—'; if (durationSec) { durationSpan.textContent = formatTime(durationSec); progressBar.max = durationSec; } else { durationSpan.textContent = '0:00'; progressBar.max = 0; } }
+    function updateAllPlayIcons() { const currentUrl = audio.src, isPlaying = !audio.paused; document.querySelectorAll('.track-list tr').forEach(row => { const playTd = row.querySelector('.track-play'); if (!playTd) return; const url = row.getAttribute('data-url'); if (url && url !== '#' && currentUrl.includes(url)) { playTd.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>'; } else { playTd.innerHTML = '<i class="fas fa-play"></i>'; } }); }
+    function loadTrack(index, autoplay=true) { if (!currentTracksList.length || index<0 || index>=currentTracksList.length) return; const track = currentTracksList[index]; if(track.url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } audio.src = track.url; audio.load(); if (autoplay) { audio.play().then(() => { playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); }).catch(() => {}); } else { updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); } }
+    function playTrackFromList(url, title, source, durationSec, sectionId) { const accordion = document.getElementById(`accordion-${sectionId}`); if (!accordion) return; const rows = accordion.querySelectorAll('.track-list tr'); const tracks = []; rows.forEach(row => { const u = row.getAttribute('data-url'); if(u && u !== '#') tracks.push({url:u, title:row.getAttribute('data-title'), source:row.getAttribute('data-source'), duration:parseInt(row.getAttribute('data-duration'))||0}); }); if(!tracks.length) return; currentTracksList = tracks; const idx = tracks.findIndex(t=>t.url===url); if(idx!==-1) { currentTrackIndex=idx; loadTrack(idx,true); } else if(tracks.length) { currentTrackIndex=0; loadTrack(0,true); } }
+    function nextTrack() { if(!currentTracksList.length) return; let ni = currentTrackIndex+1; if(ni>=currentTracksList.length) ni=0; loadTrack(ni,true); }
+    function prevTrack() { if(!currentTracksList.length) return; let ni = currentTrackIndex-1; if(ni<0) ni=currentTracksList.length-1; loadTrack(ni,true); }
+    nextBtn.addEventListener('click',nextTrack); prevBtn.addEventListener('click',prevTrack); audio.addEventListener('ended', () => { nextTrack(); updateAllPlayIcons(); });
+    trackSourceSpan.addEventListener('click',()=>{ const src = trackSourceSpan.textContent; if(src && src!=='—'){ if(playlistContent.style.display!=='block') showPlaylist(); setTimeout(()=>{ document.querySelectorAll('.accordion-item').forEach(item=>{ if(item.querySelector('.accordion-title')?.textContent.trim()===src){ const cont = item.querySelector('.accordion-content'), icon = item.querySelector('.accordion-icon i'); if(cont && !cont.classList.contains('open')){ cont.classList.add('open'); if(icon){ icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } } item.scrollIntoView({behavior:'smooth',block:'start'}); } }); },100); } });
+    document.querySelectorAll('.track-list tr').forEach(row=>{ const playTd = row.querySelector('.track-play'); if(playTd){ playTd.addEventListener('click',(e)=>{ e.stopPropagation(); const url = row.getAttribute('data-url'), title = row.getAttribute('data-title'), source = row.getAttribute('data-source'), dur = parseInt(row.getAttribute('data-duration'))||0; if(url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } if (audio.src && audio.src.includes(url)) { if (audio.paused) audio.play().then(() => updateAllPlayIcons()).catch(()=>{}); else audio.pause(); updateAllPlayIcons(); } else { const accordion = row.closest('.accordion-item'); let sid=''; if(accordion){ const hdr = accordion.querySelector('.accordion-header'); if(hdr) sid = hdr.getAttribute('data-accordion'); } if(sid) { playTrackFromList(url, title, source, dur, sid); } else { const fakeList = [{url, title, source, duration: dur}]; currentTracksList = fakeList; currentTrackIndex = 0; loadTrack(0, true); } } }); } });
+    playPauseBtn.addEventListener('click',()=>{ if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); });
+    audio.addEventListener('play', () => { playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; updateAllPlayIcons(); });
+    audio.addEventListener('pause', () => { playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; updateAllPlayIcons(); });
+    audio.addEventListener('timeupdate',()=>{ if(audio.duration && !isNaN(audio.duration)){ progressBar.value = audio.currentTime; currentTimeSpan.textContent = formatTime(audio.currentTime); if(currentTrackIndex!==-1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration===0 && audio.duration){ currentTracksList[currentTrackIndex].duration = audio.duration; durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; } } else { progressBar.value=0; currentTimeSpan.textContent='0:00'; } });
+    audio.addEventListener('loadedmetadata',()=>{ if(audio.duration && !isNaN(audio.duration)){ durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; if(currentTrackIndex!==-1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration===0) currentTracksList[currentTrackIndex].duration = audio.duration; } });
+    progressBar.addEventListener('input',()=>{ audio.currentTime = progressBar.value; });
+    document.querySelectorAll('.accordion-header').forEach(header=>{ header.addEventListener('click',()=>{ const contId = header.getAttribute('data-accordion'); const content = document.getElementById(`accordion-${contId}`); const icon = header.querySelector('.accordion-icon i'); if(content.classList.contains('open')){ content.classList.remove('open'); icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } else{ document.querySelectorAll('.accordion-content').forEach(c=>c.classList.remove('open')); document.querySelectorAll('.accordion-icon i').forEach(i=>{ i.classList.remove('fa-chevron-up'); i.classList.add('fa-chevron-down'); }); content.classList.add('open'); icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } }); });
+
+    // --- Социальные ленты и расписание ---
+    const socialLinks = [ { name: "YouTube", icon: "fab fa-youtube", url: "https://youtube.com/@sgcurend", platform: "youtube" }, { name: "Telegram", icon: "fab fa-telegram", url: "https://t.me/SGCuRend", platform: "telegram" }, { name: "Twitch", icon: "fab fa-twitch", url: "https://www.twitch.tv/curendplayground", platform: "twitch" }, { name: "TikTok", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@_maxcrd_", platform: "tiktok" }, { name: "VK", icon: "fab fa-vk", url: "https://vk.com/sgcurend", platform: "vk" }, { name: "Дзен", icon: "fas fa-newspaper", url: "https://dzen.ru/geekdigest?share_to=link", platform: "dzen" } ];
+    const MAIN_CHANNEL_ID = "UClfF0VgZ5WFNhwbCzjfDtDg", SECONDARY_CHANNEL_ID = "UCgAVT1p1-BjzVTM848vGAyQ", RSS_API_URL = "https://api.rss2json.com/v1/api.json?rss_url=", DZEN_CHANNEL_URL = "https://dzen.ru/geekdigest", DZEN_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=DzenBridge&url=${encodeURIComponent(DZEN_CHANNEL_URL)}&format=Atom`, TELEGRAM_CHANNELS = [ { username: "SGCuRend", containerId: "telegramFeed", name: "Режиссёрская Куренда" }, { username: "crdwebnews", containerId: "telegramFeedCrd", name: "Паутина Новостей!" } ], VK_GROUP_ID = "sgcurend", VK_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=VkBridge&group_id=${VK_GROUP_ID}&format=Atom`;
+    function renderSocialLinks() { const container = document.getElementById("socialLinksContainer"); if (!container) return; let html = ""; for (let link of socialLinks) html += `<a href="${link.url}" target="_blank" class="social-btn" data-platform="${link.platform}"><i class="${link.icon}"></i> ${link.name}</a>`; container.innerHTML = html; }
+    async function loadYouTubeFeed(channelId, containerId, channelName) { const feedEl = document.getElementById(containerId); if (!feedEl) return; if (!channelId) { feedEl.innerHTML = `<li class="error-placeholder">⚠️ ID канала не указан.</li>`; return; } try { const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`; const response = await fetch(`${RSS_API_URL}${encodeURIComponent(rssUrl)}`); const data = await response.json(); if (data.status !== "ok" || !data.items) throw new Error(); const items = data.items.slice(0, 4); let listHtml = ""; items.forEach(item => { listHtml += `<li><a href="${item.link}" target="_blank">${escapeHtml(item.title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${new Date(item.pubDate).toLocaleDateString("ru-RU")}</span></li>`; }); feedEl.innerHTML = listHtml; } catch (err) { feedEl.innerHTML = `<li class="error-placeholder">❌ Не удалось загрузить видео (${channelName}).</li>`; } }
+    async function loadTelegramFeed(username, containerId, channelName) { const feedEl = document.getElementById(containerId); if (!feedEl) return; const sources = [`https://rss-bridge.org/bridge01/?action=display&bridge=TelegramBridge&username=${username}&format=Atom`, `https://tg.i-c-a.su/json/${username}.json`, `https://tcx.app/api/rss/tg/channel/${username}`]; for (const src of sources) { try { const resp = await fetch(src); if (!resp.ok) throw new Error(); let items = []; if (src.includes('.json')) { const data = await resp.json(); items = data.posts || (data.channel?.posts) || []; } else { const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); items = Array.from(xml.querySelectorAll("entry")); } if (items.length) { const posts = items.slice(0, 4); let html = ""; posts.forEach(p => { let title = "Новый пост", link = "#", date = "Недавно"; if (src.includes('.json')) { title = p.text?.substring(0, 60) || "Новый пост"; link = p.link || `https://t.me/${username}/${p.id}`; date = p.date ? new Date(p.date * 1000).toLocaleDateString("ru-RU") : "Недавно"; } else { title = p.querySelector("title")?.textContent?.substring(0, 60) || "Новый пост"; link = p.querySelector("link")?.getAttribute("href") || "#"; const upd = p.querySelector("updated")?.textContent; if (upd) date = new Date(upd).toLocaleDateString("ru-RU"); } html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; return; } } catch(e) { console.warn(e); } } feedEl.innerHTML = `<li class="error-placeholder">📡 Не удалось загрузить ленту. <a href="https://t.me/${username}" target="_blank">Перейти в канал →</a></li>`; }
+    async function loadVkFeed() { const feedEl = document.getElementById("vkFeed"); if (!feedEl) return; try { const resp = await fetch(VK_RSS_URL); if (!resp.ok) throw new Error(); const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); const entries = xml.querySelectorAll("entry"); if (!entries.length) throw new Error(); let html = ""; Array.from(entries).slice(0, 4).forEach(entry => { const title = entry.querySelector("title")?.textContent?.substring(0, 60) || "Новая запись"; const link = entry.querySelector("link")?.getAttribute("href") || `https://vk.com/${VK_GROUP_ID}`; const date = entry.querySelector("updated")?.textContent ? new Date(entry.querySelector("updated").textContent).toLocaleDateString("ru-RU") : "Недавно"; html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; } catch(err) { feedEl.innerHTML = `<li class="error-placeholder">📰 Не удалось загрузить записи. <a href="https://vk.com/${VK_GROUP_ID}" target="_blank">Перейти в сообщество →</a></li>`; } }
+    async function loadDzenFeed() { const feedEl = document.getElementById("dzenFeed"); if (!feedEl) return; try { const resp = await fetch(DZEN_RSS_URL); if (!resp.ok) throw new Error(); const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); const entries = xml.querySelectorAll("entry"); if (!entries.length) throw new Error(); let html = ""; Array.from(entries).slice(0, 4).forEach(entry => { const title = entry.querySelector("title")?.textContent?.substring(0, 60) || "Новая статья"; const link = entry.querySelector("link")?.getAttribute("href") || DZEN_CHANNEL_URL; const date = entry.querySelector("updated")?.textContent ? new Date(entry.querySelector("updated").textContent).toLocaleDateString("ru-RU") : "Недавно"; html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; } catch(err) { feedEl.innerHTML = `<li class="error-placeholder">📰 Не удалось загрузить статьи. <a href="${DZEN_CHANNEL_URL}" target="_blank">Перейти на канал →</a></li>`; } }
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;'); }
+    const scheduleData = [ { day: "Среда", time: "17:00 МСК", label: "Стрим / релиз" }, { day: "Суббота", time: "15:00 МСК", label: "Стрим / видео" } ];
+    function renderSchedule() { const grid = document.getElementById('scheduleGrid'); if(grid) grid.innerHTML = scheduleData.map(item => `<div class="schedule-card"><div class="schedule-day">${item.day}</div><div class="schedule-time">${item.time}</div><div class="schedule-label">${item.label}</div></div>`).join(''); }
+    renderSchedule(); const feedbackForm = document.getElementById('feedbackForm'); const fbStatus = document.getElementById('fbStatus'); feedbackForm.addEventListener('submit', (e) => { fbStatus.innerHTML = "Отправка... Пожалуйста, подождите."; setTimeout(() => { fbStatus.innerHTML = "Спасибо! Вы будете перенаправлены."; }, 500); });
+    
+    // --- Слайдер и чат ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-item');
+    const trackSlider = document.getElementById('sliderTrack');
+    const prevSlideBtn = document.getElementById('prevSlide');
+    const nextSlideBtn = document.getElementById('nextSlide');
+    const youtubeChatBlock = document.getElementById('youtubeChatBlock');
+    const twitchChatBlock = document.getElementById('twitchChatBlock');
+    const noChatBlock = document.getElementById('noChatBlock');
+    function updateChatBySlide(slideIndex) {
+        if(slideIndex === 1) { youtubeChatBlock.style.display = 'block'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'none'; }
+        else if(slideIndex === 2) { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'block'; noChatBlock.style.display = 'none'; }
+        else { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'block'; }
+    }
+    function updateSlider() { trackSlider.style.transform = `translateX(-${currentSlide * 100}%)`; updateChatBySlide(currentSlide); }
+    if(slides.length && trackSlider) {
+        prevSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(); });
+        nextSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % slides.length; updateSlider(); });
+        updateSlider();
+    }
+    const commentsHeader = document.getElementById('commentsHeader');
+    const commentsContentDiv = document.getElementById('commentsContent');
+    const commentsIcon = commentsHeader.querySelector('.comments-icon i');
+    commentsHeader.addEventListener('click', () => {
+        if(commentsContentDiv.classList.contains('open')) {
+            commentsContentDiv.classList.remove('open');
+            commentsIcon.classList.remove('fa-chevron-up');
+            commentsIcon.classList.add('fa-chevron-down');
+        } else {
+            commentsContentDiv.classList.add('open');
+            commentsIcon.classList.remove('fa-chevron-down');
+            commentsIcon.classList.add('fa-chevron-up');
+            updateChatBySlide(currentSlide);
+        }
+    });
+    
+    // --- Автозагрузка первого трека ---
+    function preloadFirstTrack() {
+        const firstSectionRows = document.querySelectorAll('#accordion-intro .track-list tr');
+        if (firstSectionRows.length) {
+            const tracks = [];
+            for (let row of firstSectionRows) {
+                const url = row.getAttribute('data-url');
+                if (url && url !== '#') {
+                    const title = row.getAttribute('data-title');
+                    const source = row.getAttribute('data-source');
+                    const duration = parseInt(row.getAttribute('data-duration')) || 0;
+                    tracks.push({ url, title, source, duration });
+                }
+            }
+            if (tracks.length) {
+                currentTracksList = tracks;
+                currentTrackIndex = 0;
+                audio.src = tracks[0].url;
+                audio.load();
+                updatePlayerInfo(tracks[0].title, tracks[0].source, tracks[0].duration);
+            }
+        }
+    }
+    
+    // ========= ПРИМЕНЕНИЕ НАСТРОЕК ИЗ АДМИН-ПАНЕЛИ =========
+    (function applyAdminSettings() {
+        function applyStreams() {
+            const youtubeUrl = localStorage.getItem('crd_youtube_url');
+            const twitchUrl = localStorage.getItem('crd_twitch_url');
+            const sliderItems = document.querySelectorAll('.slider-item');
+            if (sliderItems.length < 3) return;
+            if (youtubeUrl) {
+                let embedHtml = '';
+                if (youtubeUrl.includes('youtube.com') || youtubeUrl.includes('youtu.be')) {
+                    let videoId = '';
+                    if (youtubeUrl.includes('youtu.be')) videoId = youtubeUrl.split('/').pop().split('?')[0];
+                    else if (youtubeUrl.includes('watch?v=')) videoId = youtubeUrl.split('v=')[1].split('&')[0];
+                    if (videoId) embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=0" allowfullscreen></iframe>`;
+                    else embedHtml = `<iframe src="${youtubeUrl}" allowfullscreen></iframe>`;
+                } else {
+                    embedHtml = `<iframe src="${youtubeUrl}" allowfullscreen></iframe>`;
+                }
+                const ytWrapper = sliderItems[1].querySelector('.video-wrapper');
+                if (ytWrapper) ytWrapper.innerHTML = embedHtml;
+            } else {
+                const defaultYt = `<iframe src="https://www.youtube.com/embed/live_stream?channel=UClfF0VgZ5WFNhwbCzjfDtDg" allowfullscreen></iframe>`;
+                const ytWrapper = sliderItems[1].querySelector('.video-wrapper');
+                if (ytWrapper && ytWrapper.innerHTML !== defaultYt) ytWrapper.innerHTML = defaultYt;
+            }
+            if (twitchUrl) {
+                let channel = twitchUrl.split('twitch.tv/')[1]?.split('/')[0]?.split('?')[0];
+                if (channel) {
+                    const embedHtml = `<iframe src="https://player.twitch.tv/?channel=${channel}&parent=localhost&parent=curend.vercel.app" allowfullscreen></iframe>`;
+                    const twWrapper = sliderItems[2].querySelector('.video-wrapper');
+                    if (twWrapper) twWrapper.innerHTML = embedHtml;
+                }
+            } else {
+                const defaultTw = `<iframe src="https://player.twitch.tv/?channel=curendplayground&parent=localhost&parent=127.0.0.1&autoplay=false" allowfullscreen></iframe>`;
+                const twWrapper = sliderItems[2].querySelector('.video-wrapper');
+                if (twWrapper && twWrapper.innerHTML !== defaultTw) twWrapper.innerHTML = defaultTw;
+            }
+        }
+
+        function applyTheme(themeMode) {
+            document.body.classList.remove('halloween-theme', 'newyear-theme');
+            if (themeMode === 'halloween') document.body.classList.add('halloween-theme');
+            else if (themeMode === 'newyear') document.body.classList.add('newyear-theme');
+        }
+
+        function applyTrackOrder(sectionId) {
+            const savedOrder = localStorage.getItem(`crd_track_order_${sectionId}`);
+            if (!savedOrder) return;
+            const orderArray = JSON.parse(savedOrder);
+            const accordionContent = document.getElementById(`accordion-${sectionId}`);
+            if (!accordionContent) return;
+            const table = accordionContent.querySelector('.track-list');
+            if (!table) return;
+            const rows = Array.from(table.querySelectorAll('tr'));
+            const trackMap = new Map();
+            rows.forEach(row => {
+                const title = row.getAttribute('data-title');
+                if (title) trackMap.set(title, row);
+            });
+            const newRows = [];
+            for (let title of orderArray) {
+                if (trackMap.has(title)) newRows.push(trackMap.get(title));
+            }
+            for (let [title, row] of trackMap.entries()) {
+                if (!orderArray.includes(title)) newRows.push(row);
+            }
+            for (let row of newRows) table.appendChild(row);
+        }
+
+        function applyAllOrders() {
+            const sections = ['intro', 'scarlet', 'devil', 'moon', 'mercs', 'rise'];
+            for (let section of sections) applyTrackOrder(section);
+        }
+
+        function loadAdminSettings() {
+            applyStreams();
+            const themeMode = localStorage.getItem('crd_theme_mode');
+            if (themeMode) applyTheme(themeMode);
+            applyAllOrders();
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key && (e.key.startsWith('crd_track_order_') || e.key === 'crd_theme_mode' || e.key === 'crd_youtube_url' || e.key === 'crd_twitch_url')) {
+                loadAdminSettings();
+            }
+        });
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadAdminSettings);
+        else loadAdminSettings();
+    })();
+
+    function init() { 
+        renderSocialLinks(); 
+        loadDzenFeed(); 
+        loadVkFeed(); 
+        loadYouTubeFeed(MAIN_CHANNEL_ID, "youtubeFeedMain", "SGCuRend"); 
+        loadYouTubeFeed(SECONDARY_CHANNEL_ID, "youtubeFeedSecondary", "CuRendPLAY"); 
+        TELEGRAM_CHANNELS.forEach(ch => loadTelegramFeed(ch.username, ch.containerId, ch.name));
+        preloadFirstTrack();
+    }
+    init();
+</script>
+</body>
+</html>
