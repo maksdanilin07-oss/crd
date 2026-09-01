@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <title>CRD|Официальный сайт сообщества</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CRD | Официальный сайт сообщества</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -69,9 +69,10 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ff0033, #1a66ff);
-            margin: 0 auto 20px auto;
+            object-fit: cover;
             border: 3px solid #ff0033;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
             transition: border-color 0.3s;
         }
         .subtitle-center { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.3px; margin: 30px 0 20px 0; text-align: center; }
@@ -231,7 +232,7 @@
         }
         .section-header { display: flex; align-items: center; gap: 12px; margin: 40px 0 20px 0; font-size: 1.1rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
         .section-header i { font-size: 1.4rem; transition: color 0.2s; }
-        .youtube-grid, .telegram-grid, .publications-grid, .streams-grid, .shorts-grid {
+        .youtube-grid, .telegram-grid, .publications-grid, .streams-grid, .shorts-grid, .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
@@ -250,17 +251,7 @@
         .feed-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .channel-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #ff99aa; background: #1e1e2a; transition: border-color 0.2s; }
         .channel-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
-        .channel-title small {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: normal;
-            margin-left: 0;
-            margin-top: 6px;
-            color: #ff99aa;
-        }
-        body.blue-theme .channel-title small {
-            color: #1a66ff;
-        }
+        .channel-title small { font-size: 0.8rem; font-weight: normal; margin-left: 6px; color: #ff99aa; }
         .feed-list { list-style: none; }
         .feed-list li { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .feed-list a { text-decoration: none; font-weight: 500; display: block; transition: color 0.2s; color: #eef2ff; }
@@ -268,8 +259,6 @@
         .feed-date { font-size: 0.7rem; margin-top: 5px; display: block; color: #8e95ab; }
         .error-placeholder { font-size: 0.9rem; padding: 12px 0; color: #ff99aa; }
         .footer { text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; font-size: 0.85rem; color: #ffffff; transition: color 0.3s, border-color 0.3s; }
-        
-        /* ========= СИНЯЯ ТЕМА ========= */
         body.blue-theme {
             background: #ffffff;
             color: #1e1f2a;
@@ -289,6 +278,7 @@
         body.blue-theme .feed-card:hover { border-color: #1a66ff; box-shadow: 0 20px 30px -10px rgba(26, 102, 255, 0.3); background: #ffffff; }
         body.blue-theme .feed-header { border-bottom-color: rgba(0,0,0,0.08); }
         body.blue-theme .channel-title { color: #111; }
+        body.blue-theme .channel-title small { color: #1a66ff; }
         body.blue-theme .feed-list a { color: #1e1f2a; }
         body.blue-theme .feed-list a:hover { color: #1a66ff; }
         body.blue-theme .feed-date { color: #5a5e73; }
@@ -301,15 +291,15 @@
             color: #ffffff !important;
         }
         body.blue-theme .social-btn i { color: #ffffff !important; }
-        body.blue-theme .avatar { border-color: #1a66ff !important; background: linear-gradient(135deg, #1a66ff, #3399ff); }
+        body.blue-theme .avatar { border: 3px solid #1a66ff !important; }
         body.blue-theme .feed-card .channel-avatar { border: 2px solid #1a66ff !important; }
-        body.blue-theme .playlist-content { background: #f0f2f8 !important; }
-        body.blue-theme .playlist-header h2 { color: #1e1f2a !important; }
-        body.blue-theme .accordion-item { background: rgba(255,255,255,0.9) !important; border-color: rgba(0,0,0,0.1) !important; }
-        body.blue-theme .track-list tr { border-bottom-color: rgba(0,0,0,0.1); }
-        body.blue-theme .track-list tr:hover { background: rgba(0,0,0,0.05); }
-        body.blue-theme .accordion-title, body.blue-theme .track-title, body.blue-theme .track-source, body.blue-theme .track-duration, body.blue-theme .playlist-description { color: #1e1f2a !important; }
-        
+        body.blue-theme .playlist-content { background: #000000 !important; }
+        body.blue-theme .accordion-title { color: #ffffff; }
+        body.blue-theme .track-title { color: #ffffff; }
+        body.blue-theme .track-source { color: #cccccc; }
+        body.blue-theme .track-duration { color: #cccccc; }
+        body.blue-theme .playlist-header h2 { color: #ffffff; }
+        body.blue-theme .playlist-description { color: #cccccc; }
         .overlay {
             position: fixed;
             top: 0;
@@ -351,14 +341,7 @@
             background: rgba(255,255,255,0.05);
         }
         .menu-divider { margin: 0 20px 20px 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); }
-        .menu-items {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            padding: 0 8px 20px 8px;
-            overflow-y: auto;
-        }
+        .menu-items { display: flex; flex-direction: column; gap: 4px; padding: 0 8px 20px 8px; flex: 1; }
         .menu-item {
             padding: 14px 20px;
             text-decoration: none;
@@ -383,82 +366,41 @@
             justify-content: center;
         }
         .special-menu-item:hover {
-            background: linear-gradient(90deg, #00cc66 50%, #aa66ff 50%);
-            color: #ffffff;
-            transform: translateX(4px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border-color: transparent;
-        }
-        .rise-menu-item {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
-            margin-top: 12px;
-            text-align: center;
-            justify-content: center;
-        }
-        .rise-menu-item:hover {
             background: linear-gradient(90deg, #ff0033 50%, #1a66ff 50%);
             color: #ffffff;
             transform: translateX(4px);
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border-color: transparent;
         }
-        .menu-item:not(.special-menu-item):not(.rise-menu-item):hover {
+        .menu-item:not(.special-menu-item):hover {
             background: #ff0033;
             color: #ffffff;
             transform: translateX(4px);
             box-shadow: 0 4px 10px rgba(255,0,51,0.3);
         }
         body.blue-theme .side-menu { background: #ffffff; border-right-color: rgba(0,0,0,0.1); }
-        body.blue-theme .menu-item:not(.special-menu-item):not(.rise-menu-item) { color: #1e1f2a; }
-        body.blue-theme .menu-item:not(.special-menu-item):not(.rise-menu-item):hover { background: #1a66ff; color: white; }
+        body.blue-theme .menu-item:not(.special-menu-item) { color: #1e1f2a; }
+        body.blue-theme .menu-item:not(.special-menu-item):hover { background: #1a66ff; color: white; }
         body.blue-theme .close-menu { background: rgba(0,0,0,0.05); color: #111; }
         body.blue-theme .close-menu:hover { background: #1a66ff; color: white; }
         body.blue-theme .menu-divider { border-top-color: rgba(0,0,0,0.15); }
         body.blue-theme .special-menu-item { border-color: rgba(0,0,0,0.2); color: #1e1f2a; }
-        body.blue-theme .special-menu-item:hover { background: linear-gradient(90deg, #00cc66 50%, #aa66ff 50%); color: white; }
-        body.blue-theme .rise-menu-item { border-color: rgba(0,0,0,0.2); color: #1e1f2a; }
-        body.blue-theme .rise-menu-item:hover { background: linear-gradient(90deg, #ff0033 50%, #1a66ff 50%); color: white; }
-
-        /* === ВЕРТИКАЛЬНЫЙ ПОЛЗУНОК ПРОКРУТКИ В БОКОВОМ МЕНЮ === */
-        .vertical-scroll-slider {
-            margin: 16px 20px 24px 20px;
-            padding: 12px 0;
-            background: rgba(255,255,255,0.05);
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+        body.blue-theme .special-menu-item:hover { background: linear-gradient(90deg, #ff0033 50%, #1a66ff 50%); color: white; }
+        .about-content, .rise-content, .playlist-content, .schedule-content, .feedback-content {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
-        .vertical-scroll-slider span {
-            font-size: 0.7rem;
-            color: #ff99aa;
-            letter-spacing: 1px;
-            writing-mode: horizontal-tb;
-        }
-        .vertical-scroll-slider input {
-            -webkit-appearance: slider-vertical;
-            width: 30px;
-            height: 120px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            cursor: pointer;
-        }
-        body.blue-theme .vertical-scroll-slider {
-            background: rgba(0,0,0,0.05);
-        }
-        body.blue-theme .vertical-scroll-slider span {
-            color: #1a66ff;
-        }
-        body.blue-theme .vertical-scroll-slider input {
-            background: rgba(0,0,0,0.1);
-        }
-        
-        /* Остальные стили (о себе, расписание, обратная связь, игра, плеер) */
-        .about-content, .schedule-content, .feedback-content, .playlist-content { background: transparent; }
+        .about-content { background: #0a0c10; }
+        body.blue-theme .about-content { background: #ffffff; }
+        .rise-content { background: #000000 !important; text-align: center; }
+        .playlist-content { background: #000000 !important; }
+        .schedule-content { background: #0a0c10; }
+        body.blue-theme .schedule-content { background: #ffffff; }
+        .feedback-content { background: #0a0c10; }
+        body.blue-theme .feedback-content { background: #ffffff; }
         .about-card, .schedule-card-container {
-            max-width: 1300px;
+            max-width: 1000px;
             margin: 0 auto;
             background: rgba(18, 22, 30, 0.9);
             border-radius: 32px;
@@ -467,41 +409,19 @@
             border: 1px solid rgba(255,255,255,0.1);
             position: relative;
         }
-        body.blue-theme .about-card,
-        body.blue-theme .schedule-card-container {
-            background: rgba(255, 255, 255, 0.95) !important;
-            border-color: rgba(0, 0, 0, 0.1) !important;
-        }
-        body.blue-theme .about-title,
-        body.blue-theme .about-text,
-        body.blue-theme .channel-card,
-        body.blue-theme .channel-card h3,
-        body.blue-theme .channel-card p,
-        body.blue-theme .contact-line,
-        body.blue-theme .schedule-card,
-        body.blue-theme .schedule-day,
-        body.blue-theme .schedule-time,
-        body.blue-theme .schedule-label,
-        body.blue-theme .feedback-form,
-        body.blue-theme .feedback-form input,
-        body.blue-theme .feedback-form textarea,
-        body.blue-theme .feedback-form button {
-            color: #1e1f2a !important;
-        }
-        body.blue-theme .schedule-day { color: #1a66ff !important; }
-        body.blue-theme .contact-line a { color: #1a66ff !important; }
-        body.blue-theme .feedback-form button { background: #1a66ff !important; color: white; }
+        body.blue-theme .about-card, body.blue-theme .schedule-card-container { background: #f8f9fc; border-color: rgba(0,0,0,0.1); }
         .about-title {
             font-size: 2.5rem;
             font-weight: 800;
+            text-align: center;
             margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #ffffff !important;
+            background: linear-gradient(135deg, #ff0033, #1a66ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
-        .about-title .web-icon { font-size: 2rem; }
-        .about-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; color: #ffffff !important; }
+        .about-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px; color: #eef2ff; }
+        body.blue-theme .about-text { color: #1e1f2a; }
         .about-channels {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -513,12 +433,10 @@
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            color: #ffffff !important;
         }
-        body.blue-theme .channel-card { background: rgba(0,0,0,0.1) !important; }
+        body.blue-theme .channel-card { background: rgba(0,0,0,0.05); }
         .channel-card i { font-size: 2.5rem; margin-bottom: 15px; }
-        .channel-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: #ffffff; }
-        .channel-card p { color: #dddddd; }
+        .channel-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
         .social-links-about {
             display: flex;
             justify-content: center;
@@ -526,8 +444,8 @@
             margin-top: 30px;
             flex-wrap: wrap;
         }
-        .social-links-about a { color: #ffffff; font-size: 1.8rem; transition: transform 0.2s; }
-        body.blue-theme .social-links-about a { color: #1e1f2a !important; }
+        .social-links-about a { color: #fff; font-size: 1.8rem; transition: transform 0.2s; }
+        body.blue-theme .social-links-about a { color: #1e1f2a; }
         .social-links-about a:hover { transform: scale(1.1); }
         .contact-line {
             text-align: center;
@@ -535,31 +453,26 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 1rem;
-            color: #ffffff;
         }
-        body.blue-theme .contact-line { border-top-color: rgba(0,0,0,0.1) !important; }
+        body.blue-theme .contact-line { border-top-color: rgba(0,0,0,0.1); }
         .contact-line a { color: #ff0033; text-decoration: none; font-weight: 500; }
-        body.blue-theme .contact-line a { color: #1a66ff !important; }
-        .schedule-content .about-title { justify-content: center; gap: 12px; text-align: center; }
-        .schedule-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 0;
-        }
+        body.blue-theme .contact-line a { color: #1a66ff; }
         .schedule-card {
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            width: 100%;
-            max-width: 400px;
         }
-        body.blue-theme .schedule-card { background: rgba(0,0,0,0.05) !important; }
-        .schedule-day { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: #ff0033; }
-        .schedule-time { font-size: 2rem; font-weight: 800; margin: 10px 0; color: #ffffff !important; }
-        .schedule-label { font-size: 0.9rem; opacity: 0.8; color: #ffffff !important; }
+        body.blue-theme .schedule-card { background: rgba(0,0,0,0.05); }
+        .schedule-day {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ff0033;
+        }
+        body.blue-theme .schedule-day { color: #1a66ff; }
+        .schedule-time { font-size: 2rem; font-weight: 800; margin: 10px 0; }
+        .schedule-label { font-size: 0.9rem; opacity: 0.8; }
         .feedback-form {
             max-width: 600px;
             margin: 0 auto;
@@ -567,7 +480,7 @@
             border-radius: 28px;
             padding: 30px;
         }
-        body.blue-theme .feedback-form { background: rgba(0,0,0,0.05) !important; }
+        body.blue-theme .feedback-form { background: rgba(0,0,0,0.05); }
         .feedback-form input, .feedback-form textarea {
             width: 100%;
             padding: 12px 16px;
@@ -575,16 +488,14 @@
             border-radius: 16px;
             border: 1px solid rgba(255,255,255,0.2);
             background: rgba(0,0,0,0.5);
-            color: #ffffff;
+            color: inherit;
             font-family: inherit;
             font-size: 1rem;
         }
         body.blue-theme .feedback-form input, body.blue-theme .feedback-form textarea {
-            background: rgba(255,255,255,0.8) !important;
-            color: #1e1f2a !important;
-            border-color: rgba(0,0,0,0.2) !important;
+            background: #fff;
+            border-color: rgba(0,0,0,0.2);
         }
-        .feedback-form input::placeholder, .feedback-form textarea::placeholder { color: #cccccc; }
         .feedback-form button {
             background: #ff0033;
             border: none;
@@ -595,59 +506,13 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        body.blue-theme .feedback-form button { background: #1a66ff !important; }
+        body.blue-theme .feedback-form button { background: #1a66ff; }
         .feedback-form button:hover { opacity: 0.9; }
-        .rise-content {
-            background: #000000 !important;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        body.blue-theme .rise-content { background: #000000 !important; }
-        .rise-title {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ff0033, #1a66ff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-        .rise-telegram-link-large {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            background: linear-gradient(135deg, #1a66ff, #26a5e4);
-            padding: 16px 36px;
-            border-radius: 60px;
-            text-decoration: none;
-            color: white;
-            font-weight: 800;
-            font-size: 1.6rem;
-            letter-spacing: 1px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            margin: 0 auto 30px auto;
-            width: fit-content;
-        }
-        .rise-telegram-link-large i { font-size: 2rem; color: white; }
-        .rise-telegram-link-large:hover { transform: scale(1.02); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
-        .soon-text { font-size: 2rem; font-weight: 800; letter-spacing: 3px; color: #ffffff; text-align: center; }
         .playlist-container { max-width: 1200px; margin: 0 auto; }
         .playlist-header { text-align: left; margin-bottom: 20px; }
         .playlist-header h2 { font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 15px; }
         .playlist-divider { height: 1px; background: #333; margin: 15px 0 25px 0; }
         .playlist-description { color: #ccc; font-size: 1.1rem; margin-bottom: 30px; }
-        .playlist-description u { text-decoration: underline; }
-        .star-link { display: inline-block; cursor: pointer; font-size: 1.2em; margin-left: 2px; transition: transform 0.1s; }
-        .star-link:hover { transform: scale(1.2); }
         .accordion-item {
             background: rgba(20,20,30,0.7);
             border-radius: 16px;
@@ -674,14 +539,13 @@
             transition: max-height 0.3s ease-out;
         }
         .accordion-content.open { max-height: 500px; padding: 20px 24px; }
-        .track-list-wrapper { overflow-x: auto; width: 100%; }
-        .track-list { width: 100%; border-collapse: collapse; min-width: 500px; }
+        .track-list { width: 100%; border-collapse: collapse; }
         .track-list tr { border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s; }
         .track-list tr:hover { background: rgba(255,255,255,0.05); }
         .track-list td { padding: 12px 8px; vertical-align: middle; }
         .track-play { width: 40px; text-align: center; font-size: 1.2rem; color: #ff0033; cursor: pointer; }
-        .track-title { font-weight: 500; color: inherit; white-space: nowrap; overflow-x: auto; max-width: 200px; }
-        .track-source { font-size: 0.8rem; color: #aaa; white-space: nowrap; overflow-x: auto; max-width: 150px; }
+        .track-title { font-weight: 500; color: inherit; }
+        .track-source { font-size: 0.8rem; color: #aaa; }
         .track-duration { text-align: right; font-size: 0.85rem; color: #aaa; white-space: nowrap; }
         .floating-music-player {
             position: fixed;
@@ -751,29 +615,11 @@
         body.blue-theme .progress-bar::-webkit-slider-thumb { background: #1a66ff; }
         .time-info { display: flex; justify-content: space-between; font-size: 0.65rem; color: #ccc; margin-top: 4px; }
         body.blue-theme .time-info { color: #555; }
-        
-        /* Контейнер для двух кругов (стрелка и иконка) с эффектом подъёма при развёрнутом плеере */
-        .corner-container {
+        .corner-arrow {
             position: fixed;
             bottom: 30px;
             left: 30px;
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            transition: bottom 0.3s ease;
-        }
-        /* Когда плеер не свёрнут (имеет нормальную ширину) — поднимаем круги выше */
-        .floating-music-player:not(.collapsed) ~ .corner-container {
-            bottom: 140px;
-        }
-        @media (max-width: 700px) {
-            .floating-music-player:not(.collapsed) ~ .corner-container {
-                bottom: 160px;
-            }
-        }
-        .corner-arrow {
+            z-index: 1000;
             background: rgba(255,51,51,0.9);
             width: 50px;
             height: 50px;
@@ -790,148 +636,130 @@
         .corner-arrow:hover { transform: scale(1.1); background: #ff0033; }
         body.blue-theme .corner-arrow { background: #1a66ff; }
         body.blue-theme .corner-arrow:hover { background: #3399ff; }
-        .corner-icon-wrapper {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .rise-header-top { margin-bottom: 40px; }
+        .rise-header-top h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ff0033, #1a66ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            display: inline-block;
+            padding: 0 20px;
         }
-        .corner-icon {
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px);
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            overflow: hidden;
-            cursor: pointer;
-        }
-        .corner-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .corner-icon:hover {
-            transform: scale(1.1);
-            background: rgba(0,0,0,0.8);
-            box-shadow: 0 0 12px rgba(255,51,51,0.6);
-        }
-        body.blue-theme .corner-icon:hover { box-shadow: 0 0 12px rgba(26,102,255,0.6); }
-        .tooltip-top, .tooltip-bottom {
-            position: absolute;
-            background: #ff0033;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            left: 80%;
-            transform: translateX(-50%);
-        }
-        body.blue-theme .tooltip-top, body.blue-theme .tooltip-bottom { background: #1a66ff; }
-        .tooltip-top { bottom: 100%; margin-bottom: 8px; }
-        .tooltip-bottom { top: 100%; margin-top: 8px; }
-        .corner-icon-wrapper:hover .tooltip-top, .corner-icon-wrapper:hover .tooltip-bottom { opacity: 1; }
-        
-        /* Игра */
-        .game-card-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            background: rgba(18, 22, 30, 0.9);
-            border-radius: 32px;
-            padding: 40px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-        body.blue-theme .game-card-container {
-            background: rgba(255,255,255,0.95);
-            border-color: rgba(0,0,0,0.1);
-        }
-        .game-card {
-            background: rgba(0,0,0,0.5);
-            border-radius: 28px;
-            padding: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .game-card h3 {
-            font-size: 1.8rem;
-            text-align: center;
-            color: #ff0033;
-            margin-bottom: 15px;
-            display: flex;
+        .rise-telegram-link-large {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-        }
-        .game-card h3 i { font-size: 1.8rem; color: #ff8c00; }
-        body.blue-theme .game-card h3 { color: #1a66ff; }
-        .game-canvas {
-            display: block;
-            margin: 0 auto;
-            background: #1a2a1f;
-            border-radius: 20px;
-            cursor: crosshair;
-            width: 100%;
-            height: auto;
-            border: 2px solid rgba(255,255,255,0.2);
-            touch-action: none;
-        }
-        .game-info {
-            margin-top: 15px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1rem;
-            font-weight: 600;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .game-control { margin-top: 12px; text-align: center; }
-        .game-btn {
-            background: #ff0033;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 40px;
+            gap: 16px;
+            background: linear-gradient(135deg, #1a66ff, #26a5e4);
+            padding: 16px 36px;
+            border-radius: 60px;
+            text-decoration: none;
             color: white;
-            font-weight: 700;
-            cursor: pointer;
-            margin: 0 5px;
-            transition: transform 0.1s;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            margin: 0 auto 40px auto;
+            width: fit-content;
         }
-        .game-btn:hover { transform: scale(1.02); background: #cc0022; }
-        body.blue-theme .game-btn { background: #1a66ff; }
-        body.blue-theme .game-btn:hover { background: #0f4fcc; }
-        .rules-block {
-            background: rgba(0,0,0,0.4);
-            border-radius: 20px;
-            padding: 15px 20px;
-            margin-top: 20px;
-            border-left: 4px solid #ff0033;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-        .timer-block {
-            background: #000000aa;
-            border-radius: 20px;
-            padding: 5px 12px;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        body.blue-theme .timer-block { background: rgba(0,0,0,0.15); color: #1e1f2a; }
+        .rise-telegram-link-large i { font-size: 2rem; color: white; }
+        .rise-telegram-link-large:hover { transform: scale(1.02); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+        .soon-text { font-size: 2rem; font-weight: 800; letter-spacing: 3px; color: #ffffff; text-align: center; margin-top: 40px; }
         @media (max-width: 700px) {
-            .game-info { font-size: 0.9rem; }
-            .rules-block { font-size: 0.75rem; }
-            .vertical-scroll-slider input { height: 80px; width: 26px; }
+            .rise-header-top h2 { font-size: 2rem; }
+            .rise-telegram-link-large { font-size: 1.2rem; padding: 12px 24px; gap: 12px; }
+            .soon-text { font-size: 1.4rem; }
+            .floating-music-player { width: 320px; }
+            .comments-content.open { max-height: 520px; }
+            .chat-frame-wrapper iframe { height: 320px; }
+        }
+
+        /* ===== ТЕМА ХЭЛЛОУИН ===== */
+        body.halloween-theme {
+            background: linear-gradient(145deg, #2a1b0e 0%, #1f0f05 100%);
+            color: #ffdd99;
+        }
+        body.halloween-theme .top-banner { background: #ff8c00; }
+        body.halloween-theme .social-btn, body.halloween-theme .feed-card {
+            border-color: #ff8c00;
+            background: rgba(0,0,0,0.5);
+        }
+        body.halloween-theme .avatar { border-color: #ff8c00; }
+        body.halloween-theme .section-header i { color: #ff8c00; }
+        body.halloween-theme .menu-item:hover { background: #ff8c00; }
+        body.halloween-theme .hero::before {
+            content: "🕷️";
+            font-size: 3rem;
+            opacity: 0.3;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+            pointer-events: none;
+        }
+        body.halloween-theme .hero::after {
+            content: "🕸️";
+            font-size: 4rem;
+            opacity: 0.2;
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            pointer-events: none;
+        }
+
+        /* ===== ТЕМА НОВЫЙ ГОД ===== */
+        body.newyear-theme {
+            background: linear-gradient(145deg, #0a2f44 0%, #041c2c 100%);
+            color: #e0f7ff;
+        }
+        body.newyear-theme .top-banner { background: #d32f2f; }
+        body.newyear-theme .social-btn, body.newyear-theme .feed-card {
+            border-color: #00bcd4;
+            background: rgba(0,0,0,0.5);
+        }
+        body.newyear-theme .avatar { border-color: #ffd700; }
+        body.newyear-theme .section-header i { color: #ffd700; }
+        body.newyear-theme .menu-item:hover { background: #00bcd4; }
+        body.newyear-theme .hero::before {
+            content: "🎄";
+            font-size: 3rem;
+            opacity: 0.4;
+            position: absolute;
+            left: 20px;
+            top: 80px;
+            pointer-events: none;
+        }
+        body.newyear-theme .hero::after {
+            content: "🎁";
+            font-size: 3rem;
+            opacity: 0.4;
+            position: absolute;
+            right: 20px;
+            bottom: 30px;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-<div class="top-banner"><div class="banner-row"><div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div><div class="right-group"><div class="theme-switch"><span class="switch-label">Тема</span><label class="switch"><input type="checkbox" id="themeToggle"><span class="slider"></span></label></div></div></div></div>
+<div class="top-banner">
+    <div class="banner-row">
+        <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+        <div class="right-group">
+            <div class="theme-switch">
+                <span class="switch-label">Тема</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Плавающий плеер -->
 <div class="floating-music-player" id="floatingPlayer">
     <button class="player-collapse-btn" id="collapsePlayerBtn"><i class="fas fa-chevron-down"></i></button>
     <div class="player-controls">
@@ -949,213 +777,205 @@
     </div>
 </div>
 <audio id="bgMusic"></audio>
-
-<div class="corner-container">
-    <div class="corner-icon-wrapper">
-        <a href="#riseContent" class="corner-icon" id="riseIcon">
-            <img src="https://atbedbquwiltfics.public.blob.vercel-storage.com/5321180161498966190.webp" alt="Go to Rise">
-        </a>
-        <div class="tooltip-top">начни ВОССТАНИЕ!</div>
-        <div class="tooltip-bottom">с Алым Каракуртом</div>
-    </div>
-    <a href="#" class="corner-arrow" id="cornerArrow"><i class="fas fa-arrow-right"></i></a>
-</div>
+<a href="#" class="corner-arrow" id="cornerArrow"><i class="fas fa-arrow-right"></i></a>
 
 <div class="overlay" id="overlay"></div>
 <div class="side-menu" id="sideMenu">
-    <div class="side-menu-header"><div class="nav-plain-text">НАВИГАЦИЯ</div><div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div></div>
+    <div class="side-menu-header">
+        <div class="nav-plain-text">НАВИГАЦИЯ</div>
+        <div class="close-menu" id="closeMenu"><i class="fas fa-times"></i></div>
+    </div>
     <div class="menu-divider"></div>
     <div class="menu-items">
         <a href="#" class="menu-item" data-page="main">Главная</a>
         <a href="#publications" class="menu-item" data-page="main">Публикации</a>
         <a href="#streams" class="menu-item" data-page="main">Стримы</a>
-        <a href="#shorts" class="menu-item" data-page="main">Клипы</a>
-        <a href="#" class="menu-item" data-page="playlist">CRD:Плейлист</a>
-        <div class="menu-divider"></div>
-        <a href="#" class="menu-item" data-page="about">О себе <i class="fas fa-up-right-from-square menu-arrow-icon"></i></a>
+        <a href="#shorts" class="menu-item" data-page="main">Короткие видео</a>
+        <a href="#" class="menu-item" data-page="about">О себе</a>
         <a href="#" class="menu-item" data-page="schedule">Расписание</a>
         <a href="#" class="menu-item" data-page="feedback">Отзывы и предложения</a>
-        <div class="menu-divider"></div>
-        <a href="#" class="menu-item special-menu-item" data-page="games"><i class="fas fa-pumpkin"></i> 🎃 НОЧЬ ТЫКВЕННЫХ БОМБ 🎃</a>
-        <a href="#" class="menu-item rise-menu-item" data-page="rise">ВОССТАНИЕ!</a>
-    </div>
-    <!-- ВЕРТИКАЛЬНЫЙ ПОЛЗУНОК ПРОКРУТКИ (внизу меню) -->
-    <div class="vertical-scroll-slider">
-        <span>ПРОКРУТКА</span>
-        <input type="range" id="pageScrollSlider" min="0" max="100" value="0" orient="vertical">
+        <a href="#" class="menu-item" data-page="playlist">CRD:Плейлист</a>
+        <a href="#" class="menu-item special-menu-item" data-page="rise">ВОССТАНИЕ!</a>
+        <a href="admin.html" class="menu-item" target="_blank">🔧 Админ-панель</a>
     </div>
 </div>
 
-<!-- Остальной контент (главная, about, schedule, feedback, rise, playlist, игра) - сокращён для экономии, но полностью рабочий -->
-<div class="container" id="mainContent"><div class="hero"><div class="avatar"></div><h1>Официальный сайт сообщества CRD</h1><div class="bio">Добро пожаловать! Это сообщество владельца канала Куренд, оно создано для удобного слежения за обновлениями разных каналов. Всё самое свежее — будет здесь.</div></div><div class="subtitle-center">Все видео, посты и стримы — можно найти тут:</div><div class="links-grid" id="socialLinksContainer"></div>
-<div class="featured-slider"><div class="slider-container"><div class="slider-track" id="sliderTrack"><div class="slider-item"><div class="section-title"><i class="fas fa-video"></i> <span>Трейлер / Интро</span></div><div class="video-wrapper"><video controls poster="https://img.youtube.com/vi/7jmoAl6vi2E/maxresdefault.jpg" preload="metadata"><source src="https://atbedbquwiltfics.public.blob.vercel-storage.com/%D0%98%D0%BD%D1%82%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B9%20%D0%BF%D0%BE%D0%BB%D0%BE%D0%B2%D0%B8%D0%BD%D1%8B%202026%20%D0%B3%D0%BE%D0%B4%D0%B0%20%5Bget.gt%5D.mp4" type="video/mp4"></video></div></div><div class="slider-item"><div class="section-title"><i class="fab fa-youtube"></i> <span>Прямой эфир YouTube</span></div><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/live_stream?channel=UClfF0VgZ5WFNhwbCzjfDtDg" allowfullscreen></iframe></div></div><div class="slider-item"><div class="section-title"><i class="fab fa-twitch"></i> <span>Прямой эфир Twitch</span></div><div class="video-wrapper"><iframe src="https://player.twitch.tv/?channel=curendplayground&parent=localhost&parent=127.0.0.1&autoplay=false" allowfullscreen></iframe></div></div></div></div><button class="slider-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button><button class="slider-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button></div>
-<div class="comments-accordion" id="commentsAccordion"><div class="comments-header" id="commentsHeader"><span class="comments-title"><i class="fas fa-comments"></i> Комментарии прямого эфира</span><span class="comments-icon"><i class="fas fa-chevron-down"></i></span></div><div class="comments-content" id="commentsContent"><div id="youtubeChatBlock" style="display: none;"><div class="chat-frame-wrapper"><iframe src="https://www.youtube.com/live_chat?channel=UClfF0VgZ5WFNhwbCzjfDtDg&embed_domain=localhost&embed_domain=127.0.0.1" allowfullscreen></iframe></div></div><div id="twitchChatBlock" style="display: none;"><div class="chat-frame-wrapper"><iframe src="https://www.twitch.tv/embed/curendplayground/chat?parent=localhost&parent=127.0.0.1" allowfullscreen></iframe></div></div><div id="noChatBlock" class="no-chat-placeholder"><i class="fas fa-comment-slash"></i> Чат недоступен для этого видео (трейлер / интро)</div></div></div>
-<div class="section-header"><i class="fab fa-youtube"></i><span>YOUTUBE | КАНАЛЫ — ПОСЛЕДНИЕ ВИДЕО</span></div><div class="youtube-grid"><div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRend|Куренд <small>основной</small></div></div><ul class="feed-list" id="youtubeFeedMain"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@sgcurend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div><div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRendPLAY <small>второй канал</small></div></div><ul class="feed-list" id="youtubeFeedSecondary"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@curend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div></div>
-<div class="section-header"><i class="fab fa-telegram"></i><span>TELEGRAM | КАНАЛЫ</span></div>
-<div class="telegram-grid">
-    <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Режиссёрская Куренда <small>блог</small></div></div><ul class="feed-list" id="telegramFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/SGCuRend" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
-    <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Паутина Новостей! <small>гик-новости</small></div></div><ul class="feed-list" id="telegramFeedCrd"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/crdwebnews" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
+<!-- Основной контент -->
+<div class="container" id="mainContent">
+    <div class="hero">
+        <img class="avatar" src="https://yt3.googleusercontent.com/ytc/APkrFKY2u2i-cZrWz1YhTKkMN_10WrwNtHGFfFkER2cK=s900-c-k-c0x00ffffff-no-rj" alt="Куренд">
+        <h1>Официальный сайт сообщества CRD</h1>
+        <div class="bio">Добро пожаловать! Это сообщество владельца канала Куренд, оно создано для удобного слежения за обновлениями разных каналов. Всё самое свежее — будет здесь.</div>
+    </div>
+    <div class="subtitle-center">Все видео, посты и стримы — можно найти тут:</div>
+    <div class="links-grid" id="socialLinksContainer"></div>
+    
+    <!-- Слайдер -->
+    <div class="featured-slider">
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <div class="slider-item">
+                    <div class="section-title"><i class="fas fa-video"></i> <span>Трейлер / Интро</span></div>
+                    <div class="video-wrapper">
+                        <video controls poster="https://img.youtube.com/vi/7jmoAl6vi2E/maxresdefault.jpg" preload="metadata">
+                            <source src="https://atbedbquwiltfics.public.blob.vercel-storage.com/%D0%98%D0%BD%D1%82%D1%80%D0%BE%20%D0%BF%D0%B5%D1%80%D0%B2%D0%BE%D0%B9%20%D0%BF%D0%BE%D0%BB%D0%BE%D0%B2%D0%B8%D0%BD%D1%8B%202026%20%D0%B3%D0%BE%D0%B4%D0%B0%20%5Bget.gt%5D.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="section-title"><i class="fab fa-youtube"></i> <span>Прямой эфир YouTube</span></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UClfF0VgZ5WFNhwbCzjfDtDg" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="section-title"><i class="fab fa-twitch"></i> <span>Прямой эфир Twitch</span></div>
+                    <div class="video-wrapper">
+                        <iframe src="https://player.twitch.tv/?channel=curendplayground&parent=localhost&parent=127.0.0.1&autoplay=false" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Блок комментариев прямого эфира -->
+    <div class="comments-accordion" id="commentsAccordion">
+        <div class="comments-header" id="commentsHeader">
+            <span class="comments-title"><i class="fas fa-comments"></i> Комментарии прямого эфира</span>
+            <span class="comments-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="comments-content" id="commentsContent">
+            <div id="youtubeChatBlock" style="display: none;">
+                <div class="chat-frame-wrapper">
+                    <iframe src="https://www.youtube.com/live_chat?channel=UClfF0VgZ5WFNhwbCzjfDtDg&embed_domain=localhost&embed_domain=127.0.0.1" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div id="twitchChatBlock" style="display: none;">
+                <div class="chat-frame-wrapper">
+                    <iframe src="https://www.twitch.tv/embed/curendplayground/chat?parent=localhost&parent=127.0.0.1" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div id="noChatBlock" class="no-chat-placeholder">
+                <i class="fas fa-comment-slash"></i> Чат недоступен для этого видео (трейлер / интро)
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header"><i class="fab fa-youtube"></i><span>YOUTUBE | КАНАЛЫ — ПОСЛЕДНИЕ ВИДЕО</span></div>
+    <div class="youtube-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRend|Куренд <small>основной</small></div></div><ul class="feed-list" id="youtubeFeedMain"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@sgcurend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div class="channel-title">CuRendPLAY <small>второй канал</small></div></div><ul class="feed-list" id="youtubeFeedSecondary"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка видео...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://youtube.com/@curend" target="_blank" class="social-btn" data-platform="youtube" style="background:#ff0000;padding:8px 20px;gap:8px"><i class="fab fa-youtube"></i> Перейти на канал</a></div></div>
+    </div>
+    <div class="section-header"><i class="fab fa-telegram"></i><span>TELEGRAM | КАНАЛЫ</span></div>
+    <div class="telegram-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Режиссёрская Куренда <small>блог</small></div></div><ul class="feed-list" id="telegramFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/SGCuRend" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><div class="channel-title">Паутина Новостей! <small>гик-новости</small></div></div><ul class="feed-list" id="telegramFeedCrd"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка постов...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://t.me/crdwebnews" target="_blank" class="social-btn" data-platform="telegram" style="background:#26a5e4;padding:8px 20px;gap:8px"><i class="fab fa-telegram"></i> Перейти в канал</a></div></div>
+    </div>
+    <div id="publications" class="section-header"><i class="fas fa-newspaper"></i><span>ПУБЛИКАЦИИ</span></div>
+    <div class="publications-grid">
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" id="dzenAvatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Zen_logo_icon.svg/3840px-Zen_logo_icon.svg.png"><div class="channel-title">Geek Digest <small>статьи</small></div></div><ul class="feed-list" id="dzenFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка статей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://dzen.ru/geekdigest" target="_blank" class="social-btn" data-platform="dzen" style="background:#2a3f54;padding:8px 20px;gap:8px"><i class="fas fa-newspaper"></i> Перейти в Дзен</a></div></div>
+        <div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/145/145813.png"><div class="channel-title">Что, если...Куренд в ВК? <small>сообщество</small></div></div><ul class="feed-list" id="vkFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка записей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://vk.com/sgcurend" target="_blank" class="social-btn" data-platform="vk" style="background:#4c75a3;padding:8px 20px;gap:8px"><i class="fab fa-vk"></i> Перейти в сообщество</a></div></div>
+    </div>
+    <div id="streams" class="section-header"><i class="fas fa-video"></i><span>СТРИМЫ</span></div>
+    <div class="streams-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://img.magnific.com/premium-vector/vector-twitch-social-media-logo_1093524-449.jpg?semt=ais_hybrid" style="width:64px;height:64px;object-fit:cover"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">curendplayground</div><div class="channel-title"><small style="font-size:0.9rem">стримы</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.twitch.tv/curendplayground" target="_blank" class="social-btn" data-platform="twitch" style="background:#9146ff;padding:12px 28px;gap:12px"><i class="fab fa-twitch"></i> Смотреть на Twitch</a></div></div></div>
+    <div id="shorts" class="section-header"><i class="fab fa-tiktok"></i><span>КОРОТКИЕ ВИДЕО</span></div>
+    <div class="shorts-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" style="width:64px;height:64px"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">CuRend в TikTok</div><div class="channel-title"><small style="font-size:0.9rem">короткие видео</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.tiktok.com/@_maxcrd_" target="_blank" class="social-btn" data-platform="tiktok" style="background:#000000; padding:12px 28px; gap:12px;"><i class="fab fa-tiktok"></i> Открыть профиль</a></div></div></div>
+    <div class="footer"><i class="fab fa-youtube"></i> CRD · Все обновления сообщества в одном месте · Подписывайся! и не пропускай новое</div>
 </div>
-<div id="publications" class="section-header"><i class="fas fa-newspaper"></i><span>ПУБЛИКАЦИИ</span></div><div class="publications-grid"><div class="feed-card"><div class="feed-header"><img class="channel-avatar" id="dzenAvatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Zen_logo_icon.svg/3840px-Zen_logo_icon.svg.png"><div class="channel-title">Geek Digest <small>статьи</small></div></div><ul class="feed-list" id="dzenFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка статей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://dzen.ru/geekdigest" target="_blank" class="social-btn" data-platform="dzen" style="background:#2a3f54;padding:8px 20px;gap:8px"><i class="fas fa-newspaper"></i> Перейти в Дзен</a></div></div><div class="feed-card"><div class="feed-header"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/145/145813.png"><div class="channel-title">Что, если...Куренд в ВК? <small>сообщество</small></div></div><ul class="feed-list" id="vkFeed"><li><i class="fas fa-spinner fa-pulse"></i> Загрузка записей...</li></ul><div style="margin-top:16px;text-align:center"><a href="https://vk.com/sgcurend" target="_blank" class="social-btn" data-platform="vk" style="background:#4c75a3;padding:8px 20px;gap:8px"><i class="fab fa-vk"></i> Перейти в сообщество</a></div></div></div>
-<div id="streams" class="section-header"><i class="fas fa-video"></i><span>СТРИМЫ</span></div><div class="streams-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://img.magnific.com/premium-vector/vector-twitch-social-media-logo_1093524-449.jpg?semt=ais_hybrid" style="width:64px;height:64px;object-fit:cover"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">curendplayground</div><div class="channel-title"><small style="font-size:0.9rem">стримы</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.twitch.tv/curendplayground" target="_blank" class="social-btn" data-platform="twitch" style="background:#9146ff;padding:12px 28px;gap:12px"><i class="fab fa-twitch"></i> Смотреть на Twitch</a></div></div></div>
-<div id="shorts" class="section-header"><i class="fab fa-tiktok"></i><span>КЛИПЫ</span></div><div class="shorts-grid"><div class="feed-card" style="text-align:center"><div class="feed-header" style="border-bottom:none;justify-content:center"><img class="channel-avatar" src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" style="width:64px;height:64px"></div><div class="channel-title" style="font-size:1.5rem;margin-top:8px">CuRend в TikTok</div><div class="channel-title"><small style="font-size:0.9rem">короткие видео</small></div><div style="margin-top:16px;text-align:center"><a href="https://www.tiktok.com/@_maxcrd_" target="_blank" class="social-btn" data-platform="tiktok" style="background:#000000; padding:12px 28px; gap:12px;"><i class="fab fa-tiktok"></i> Открыть профиль</a></div></div></div>
-<div class="footer"><i class="fab fa-youtube"></i> CRD · Все обновления сообщества в одном месте · Подписывайся! и не пропускай новое</div></div>
 
-<div class="container about-content" id="aboutContent"><div class="about-card"><h2 class="about-title">О себе <span class="web-icon">🕸️</span></h2><div class="about-text"><p>Меня зовут <strong>Куренд (Макс)</strong>. Я создаю в основном паучий контент, но иногда на втором канале тянет пройти какой-нибудь другой жанр. Люблю делиться мыслями, блогами, анонсами, обложками к видео и моментами со съёмок. Всё это выражено в прохождениях и обзорах.</p><br><p>Создал специальный сайт, который я назвал сокращённо CRD, как аббревиатура моего бренда. В нём вы найдёте всё, что я делаю — от основного YouTube-канала до эксклюзивов в Telegram и других соцсетях. Увидимся!</p></div><div class="about-channels"><div class="channel-card"><i class="fab fa-youtube" style="color:#ff0033;"></i><h3>YouTube</h3><p><strong>CuRend|Куренд</strong> — основной канал</p><p><strong>CuRendPLAY</strong> — второй канал</p></div><div class="channel-card"><i class="fab fa-telegram" style="color:#26a5e4;"></i><h3>Telegram</h3><p><strong>Режиссёрская Куренда</strong> — блог</p><p><strong>Паутина Новостей!</strong> — гик-новости</p></div><div class="channel-card"><i class="fab fa-twitch" style="color:#9146ff;"></i><h3>Twitch</h3><p>curendplayground — стримы</p></div><div class="channel-card"><i class="fab fa-tiktok"></i><h3>TikTok</h3><p>CuRend в TikTok — короткие видео</p></div><div class="channel-card"><i class="fab fa-vk" style="color:#4c75a3;"></i><h3>ВКонтакте</h3><p>Что, если...Куренд в ВК? — сообщество</p></div><div class="channel-card"><i class="fas fa-newspaper"></i><h3>Дзен</h3><p>Geek Digest — статьи</p></div></div><div class="social-links-about"><a href="https://youtube.com/@sgcurend" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://t.me/SGCuRend" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://www.twitch.tv/curendplayground" target="_blank"><i class="fab fa-twitch"></i></a><a href="https://www.tiktok.com/@_maxcrd_" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://vk.com/sgcurend" target="_blank"><i class="fab fa-vk"></i></a><a href="https://dzen.ru/geekdigest" target="_blank"><i class="fas fa-newspaper"></i></a></div><div class="contact-line">по вопросам (ВК): <a href="https://vk.com/crdik" target="_blank">https://vk.com/crdik</a></div></div></div>
+<!-- Страница "О себе" -->
+<div class="container about-content" id="aboutContent"><div class="about-card"><h2 class="about-title">🕷️ О себе</h2><div class="about-text"><p>Меня зовут <strong>Куренд (Макс)</strong>. Я создаю в основном паучий контент, но иногда на втором канале тянет пройти какой-нибудь другой жанр. Люблю делиться мыслями, блогами, анонсами, обложками к видео и моментами со съёмок. Всё это выражено в прохождениях и обзорах.</p><br><p>Создал специальный сайт, который я назвал сокращённо CRD, как аббревиатура моего бренда. В нём вы найдёте всё, что я делаю — от основного YouTube-канала до эксклюзивов в Telegram и других соцсетях. Увидимся!</p></div><div class="about-channels"><div class="channel-card"><i class="fab fa-youtube" style="color:#ff0033;"></i><h3>YouTube</h3><p><strong>CuRend|Куренд</strong> — основной канал</p><p><strong>CuRendPLAY</strong> — второй канал</p></div><div class="channel-card"><i class="fab fa-telegram" style="color:#26a5e4;"></i><h3>Telegram</h3><p><strong>Режиссёрская Куренда</strong> — блог</p><p><strong>Паутина Новостей!</strong> — гик-новости</p></div><div class="channel-card"><i class="fab fa-twitch" style="color:#9146ff;"></i><h3>Twitch</h3><p>curendplayground — стримы</p></div><div class="channel-card"><i class="fab fa-tiktok"></i><h3>TikTok</h3><p>CuRend в TikTok — короткие видео</p></div><div class="channel-card"><i class="fab fa-vk" style="color:#4c75a3;"></i><h3>ВКонтакте</h3><p>Что, если...Куренд в ВК? — сообщество</p></div><div class="channel-card"><i class="fas fa-newspaper"></i><h3>Дзен</h3><p>Geek Digest — статьи</p></div></div><div class="social-links-about"><a href="https://youtube.com/@sgcurend" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://t.me/SGCuRend" target="_blank"><i class="fab fa-telegram"></i></a><a href="https://www.twitch.tv/curendplayground" target="_blank"><i class="fab fa-twitch"></i></a><a href="https://www.tiktok.com/@_maxcrd_" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://vk.com/sgcurend" target="_blank"><i class="fab fa-vk"></i></a><a href="https://dzen.ru/geekdigest" target="_blank"><i class="fas fa-newspaper"></i></a></div><div class="contact-line">по вопросам (ВК): <a href="https://vk.com/crdik" target="_blank">https://vk.com/crdik</a></div></div></div>
 
+<!-- Страница "Расписание" -->
 <div class="container schedule-content" id="scheduleContent"><div class="schedule-card-container"><h2 class="about-title"><i class="far fa-calendar-alt"></i> Расписание</h2><div class="schedule-grid" id="scheduleGrid"></div></div></div>
 
-<div class="container feedback-content" id="feedbackContent"><div class="schedule-card-container"><h2 class="about-title">💬 Отзывы и предложения</h2><form id="feedbackForm" class="feedback-form" action="https://formsubmit.co/ofitswebsite.crd@mail.ru" method="POST"><input type="hidden" name="_subject" value="Новый отзыв с сайта CRD"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://crd-site.ru/thanks.html"><input type="text" name="_honey" style="display:none"><input type="text" name="Имя" placeholder="Ваше имя (опционально)" id="fbName"><textarea name="Сообщение" rows="4" placeholder="Напишите отзыв или предложение..." id="fbMessage" required></textarea><button type="submit">Отправить</button></form><div id="fbStatus" style="text-align:center; margin-top:20px; font-size:0.9rem; color:#ffffff;"></div></div></div>
+<!-- Страница "Отзывы и предложения" -->
+<div class="container feedback-content" id="feedbackContent"><div class="schedule-card-container"><h2 class="about-title">💬 Отзывы и предложения</h2><form id="feedbackForm" class="feedback-form" action="https://formsubmit.co/ofitswebsite.crd@mail.ru" method="POST"><input type="hidden" name="_subject" value="Новый отзыв с сайта CRD"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_next" value="https://crd-site.ru/thanks.html"><input type="text" name="_honey" style="display:none"><input type="text" name="Имя" placeholder="Ваше имя (опционально)" id="fbName"><textarea name="Сообщение" rows="4" placeholder="Напишите отзыв или предложение..." id="fbMessage" required></textarea><button type="submit">Отправить</button></form><div id="fbStatus" style="text-align:center; margin-top:20px; font-size:0.9rem;"></div></div></div>
 
-<div class="container rise-content" id="riseContent">
-    <h2 class="rise-title">ВОССТАНИЕ!</h2>
-    <a href="https://t.me/thelairscarletkaracurt" target="_blank" class="rise-telegram-link-large">
-        <i class="fab fa-telegram"></i> CRDTV
-    </a>
-    <div class="soon-text">СКОРО ДОБАВИТСЯ</div>
-</div>
+<!-- Страница "Восстание!" -->
+<div class="container rise-content" id="riseContent"><div class="rise-header-top"><h2>🕸️ ВОССТАНИЕ! 🕸️</h2></div><a href="https://t.me/thelairscarletkaracurt" target="_blank" class="rise-telegram-link-large"><i class="fab fa-telegram"></i> CRDTV</a><div class="soon-text">СКОРО ДОБАВИТСЯ</div></div>
 
+<!-- Страница "CRD:Плейлист" с исправленными длительностями -->
 <div class="container playlist-content" id="playlistContent">
     <div class="playlist-container">
         <div class="playlist-header"><h2>РАЗДЕЛ "CRD:ПЛЕЙЛИСТ"</h2><div class="playlist-divider"></div></div>
-        <div class="playlist-description">тут собраны все музыкальные произведения от интро до всех песен <u>вселенной Восставших</u> <span class="star-link" onclick="document.getElementById('accordion-rise').scrollIntoView({behavior:'smooth'});">*</span></div>
-        <div class="accordion-item"><div class="accordion-header" data-accordion="intro"><span class="accordion-title">Тематические ИНТРО</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-intro"><div class="track-list-wrapper"><table class="track-list">
+        <div class="playlist-description">тут собраны все музыкальные произведения от интро до всех песен вселенной <u>Восставших</u></div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="intro"><span class="accordion-title">Тематические ИНТРО</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-intro"><table class="track-list">
             <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Clean%20Remaster%20%28Minimal%20Change%29%20%281%29.mp3" data-title="Интро" data-source="Тематические ИНТРО" data-duration="178"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:58</td></tr>
             <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Blacklist%20Entry%20v2.mp3" data-title="Тёмное интро" data-source="Тематические ИНТРО" data-duration="162"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Тёмное интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:42</td></tr>
             <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Christmas%20Nostalgia%20Bounce%20%28Instrumental%29.mp3" data-title="Новогоднее интро" data-source="Тематические ИНТРО" data-duration="209"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Новогоднее интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">3:29</td></tr>
             <tr data-url="https://atbedbquwiltfics.public.blob.vercel-storage.com/Darker%20Halloween%20with%20Laughter.mp3" data-title="Хэллоуинское интро" data-source="Тематические ИНТРО" data-duration="174"><td class="track-play"><i class="fas fa-play"></i></td><td class="track-title">Хэллоуинское интро</td><td class="track-source">Тематические ИНТРО</td><td class="track-duration">2:54</td></tr>
-         </table></div></div></div>
+        </table></div></div>
         <div class="accordion-item"><div class="accordion-header" data-accordion="scarlet"><span class="accordion-title">Алый Каракурт</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-scarlet"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
         <div class="accordion-item"><div class="accordion-header" data-accordion="devil"><span class="accordion-title">Дьявол</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-devil"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
         <div class="accordion-item"><div class="accordion-header" data-accordion="moon"><span class="accordion-title">Лунный Воин</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-moon"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
         <div class="accordion-item"><div class="accordion-header" data-accordion="mercs"><span class="accordion-title">Наемники</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-mercs"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
-        <div class="accordion-item"><div class="accordion-header" data-accordion="rise"><span class="accordion-title" id="rise-title">Восставшие</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-rise"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
-    </div>
-</div>
-
-<div class="container game-content" id="gameContent" style="display:none">
-    <div class="game-card-container">
-        <div class="game-card">
-            <h3><i class="fas fa-pumpkin"></i> НОЧЬ ТЫКВЕННЫХ БОМБ <i class="fas fa-pumpkin"></i></h3>
-            <canvas id="bombGameCanvas" class="game-canvas" width="800" height="450" style="width:100%; aspect-ratio:800/450; cursor: crosshair;"></canvas>
-            <div class="game-info">
-                <span>🎯 Счёт: <span id="bombScore">0</span></span>
-                <span>❤️ Жизни: <span id="bombLives">3</span></span>
-                <span>⚡ Уровень: <span id="bombLevel">1</span></span>
-                <span id="rapidFireTimer" style="color:#ff6600;">⚡</span>
-                <span id="slowMotionTimer" style="color:#ffaa00;">⏳</span>
-                <span id="spreadTimer" style="color:#3399ff;">🔱</span>
-                <span id="comboCounter" style="color:#ffaa55;">🎯 0/20</span>
-                <span class="timer-block" id="gameTimer">05:00</span>
-            </div>
-            <div class="game-control">
-                <button class="game-btn" id="startBombBtn">▶ Старт</button>
-                <button class="game-btn" id="resetBombBtn">🔄 Сброс</button>
-            </div>
-            <div class="rules-block">
-                🕷️ <strong>Правила игры (кратко):</strong> Двигай паука мышью (ПК) или пальцем (телефон), кликай (касайся) по пауку – стреляй. Тыквы: касание = −1 жизнь, падение на землю отнимает жизнь <strong>только без босса</strong>. 🟡 Картриджи: 🔴 быстрая стрельба 5с, 🔵 веер 3 снаряда 5с, 🟡 замедление 5с (уменьшает частоту картриджей). Каждый даёт +1 жизнь и +2 очка. ✨ <strong>Усиленный веер:</strong> за 20 попаданий по тыквам (серия) активируется на 5с – клик даёт 5 веерных залпов (15 снарядов). Серия сбрасывается при потере жизни. 🐉 <strong>Гоблин:</strong> каждые 5 уровней, кидает 3 тыквы веером, касание Гоблина −1 жизнь, HP циклично 10→20→30→40→50→10... За победу +10 очков и +2 жизни. ⏱️ <strong>Таймер 5 минут:</strong> выжил – победа, умер – поражение.
-            </div>
-        </div>
+        <div class="accordion-item"><div class="accordion-header" data-accordion="rise"><span class="accordion-title">Восставшие</span><span class="accordion-icon"><i class="fas fa-chevron-down"></i></span></div><div class="accordion-content" id="accordion-rise"><div style="padding:12px;text-align:center;color:#aaa;">Скоро добавятся треки</div></div></div>
     </div>
 </div>
 
 <script>
-    // Тема, меню, навигация, ползунок прокрутки
+    // --- Тема (обычная синяя/красная) ---
     const themeToggle = document.getElementById('themeToggle');
     if (localStorage.getItem('crdTheme') === 'blue') { themeToggle.checked = true; document.body.classList.add('blue-theme'); }
     themeToggle.addEventListener('change', function() { if(this.checked) { document.body.classList.add('blue-theme'); localStorage.setItem('crdTheme', 'blue'); } else { document.body.classList.remove('blue-theme'); localStorage.setItem('crdTheme', 'red'); } });
 
+    // --- Меню и навигация ---
     const menuIcon = document.getElementById('menuIcon'), overlay = document.getElementById('overlay'), sideMenu = document.getElementById('sideMenu'), closeMenuBtn = document.getElementById('closeMenu');
     function openMenu() { sideMenu.classList.add('open'); overlay.style.display = 'block'; document.body.style.overflow = 'hidden'; }
     function closeMenuFunc() { sideMenu.classList.remove('open'); overlay.style.display = 'none'; document.body.style.overflow = ''; }
     menuIcon.addEventListener('click', openMenu); closeMenuBtn.addEventListener('click', closeMenuFunc); overlay.addEventListener('click', closeMenuFunc);
-    
-    const mainContent = document.getElementById('mainContent'), aboutContent = document.getElementById('aboutContent'), riseContent = document.getElementById('riseContent'), playlistContent = document.getElementById('playlistContent'), scheduleContent = document.getElementById('scheduleContent'), feedbackContent = document.getElementById('feedbackContent'), gameContent = document.getElementById('gameContent');
-    function showMain() { mainContent.style.display = 'block'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showAbout() { mainContent.style.display = 'none'; aboutContent.style.display = 'block'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showRise() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'flex'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showPlaylist() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'block'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showSchedule() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'block'; feedbackContent.style.display = 'none'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showFeedback() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'block'; gameContent.style.display = 'none'; closeMenuFunc(); }
-    function showGames() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; gameContent.style.display = 'block'; closeMenuFunc(); }
-    document.querySelectorAll('.menu-item, .special-menu-item, .rise-menu-item').forEach(item => { item.addEventListener('click', (e) => { e.preventDefault(); const page = item.getAttribute('data-page'); if (page === 'rise') showRise(); else if (page === 'about') showAbout(); else if (page === 'playlist') showPlaylist(); else if (page === 'schedule') showSchedule(); else if (page === 'feedback') showFeedback(); else if (page === 'games') showGames(); else { showMain(); if (item.getAttribute('href') && item.getAttribute('href') !== '#') { const targetId = item.getAttribute('href').substring(1); const targetElement = document.getElementById(targetId); if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } }); });
-    document.getElementById('cornerArrow').addEventListener('click', (e) => { e.preventDefault(); showAbout(); });
-    document.getElementById('riseIcon').addEventListener('click', (e) => { e.preventDefault(); document.getElementById('riseContent').scrollIntoView({ behavior: 'smooth' }); showRise(); });
+    const mainContent = document.getElementById('mainContent'), aboutContent = document.getElementById('aboutContent'), riseContent = document.getElementById('riseContent'), playlistContent = document.getElementById('playlistContent'), scheduleContent = document.getElementById('scheduleContent'), feedbackContent = document.getElementById('feedbackContent');
+    const menuItems = document.querySelectorAll('.menu-item'), cornerArrow = document.getElementById('cornerArrow');
+    function showMain() { mainContent.style.display = 'block'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showAbout() { mainContent.style.display = 'none'; aboutContent.style.display = 'block'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showRise() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'block'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showPlaylist() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'block'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showSchedule() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'block'; feedbackContent.style.display = 'none'; closeMenuFunc(); }
+    function showFeedback() { mainContent.style.display = 'none'; aboutContent.style.display = 'none'; riseContent.style.display = 'none'; playlistContent.style.display = 'none'; scheduleContent.style.display = 'none'; feedbackContent.style.display = 'block'; closeMenuFunc(); }
+    menuItems.forEach(item => { item.addEventListener('click', (e) => { e.preventDefault(); const page = item.getAttribute('data-page'); if (page === 'rise') showRise(); else if (page === 'about') showAbout(); else if (page === 'playlist') showPlaylist(); else if (page === 'schedule') showSchedule(); else if (page === 'feedback') showFeedback(); else { showMain(); if (item.getAttribute('href') && item.getAttribute('href') !== '#') { const targetId = item.getAttribute('href').substring(1); const targetElement = document.getElementById(targetId); if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' }); } } }); });
+    cornerArrow.addEventListener('click', (e) => { e.preventDefault(); showAbout(); });
     showMain();
 
-    // Вертикальный ползунок прокрутки в меню
-    const scrollSlider = document.getElementById('pageScrollSlider');
-    if (scrollSlider) {
-        function updateScrollSlider() {
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            if (docHeight <= 0) return;
-            const scrollPercent = (window.scrollY / docHeight) * 100;
-            scrollSlider.value = scrollPercent;
-        }
-        window.addEventListener('scroll', updateScrollSlider);
-        scrollSlider.addEventListener('input', function() {
-            const percent = parseFloat(this.value) / 100;
-            const targetY = percent * (document.documentElement.scrollHeight - window.innerHeight);
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-        });
-        updateScrollSlider();
-    }
-
-    // Аудиоплеер (сокращён, но полностью рабочий)
-    const audio = document.getElementById('bgMusic');
-    const playPauseBtn = document.getElementById('musicPlayerBtn');
-    const prevBtn = document.getElementById('prevTrackBtn');
-    const nextBtn = document.getElementById('nextTrackBtn');
-    const progressBar = document.getElementById('progressBar');
-    const currentTimeSpan = document.getElementById('currentTime');
-    const durationSpan = document.getElementById('duration');
-    const trackNameSpan = document.getElementById('currentTrackName');
-    const trackSourceSpan = document.getElementById('currentTrackSource');
+    // --- Аудиоплеер ---
+    const audio = document.getElementById('bgMusic'), playPauseBtn = document.getElementById('musicPlayerBtn'), prevBtn = document.getElementById('prevTrackBtn'), nextBtn = document.getElementById('nextTrackBtn'), progressBar = document.getElementById('progressBar'), currentTimeSpan = document.getElementById('currentTime'), durationSpan = document.getElementById('duration'), trackNameSpan = document.getElementById('currentTrackName'), trackSourceSpan = document.getElementById('currentTrackSource');
     let currentTracksList = [], currentTrackIndex = -1;
-    const floatingPlayer = document.getElementById('floatingPlayer');
-    const collapseBtn = document.getElementById('collapsePlayerBtn');
+    const floatingPlayer = document.getElementById('floatingPlayer'), collapseBtn = document.getElementById('collapsePlayerBtn');
     collapseBtn.addEventListener('click', () => { floatingPlayer.classList.toggle('collapsed'); const icon = collapseBtn.querySelector('i'); if (floatingPlayer.classList.contains('collapsed')) { icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } else { icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } });
-    function formatTime(seconds) { if (isNaN(seconds)) return '0:00'; const mins = Math.floor(seconds / 60); const secs = Math.floor(seconds % 60); return `${mins}:${secs < 10 ? '0' : ''}${secs}`; }
+    function formatTime(seconds) { if (isNaN(seconds)) return '0:00'; const mins = Math.floor(seconds/60), secs = Math.floor(seconds%60); return `${mins}:${secs<10?'0':''}${secs}`; }
     function updatePlayerInfo(title, source, durationSec) { trackNameSpan.textContent = title || 'Не выбрано'; trackSourceSpan.textContent = source || '—'; if (durationSec) { durationSpan.textContent = formatTime(durationSec); progressBar.max = durationSec; } else { durationSpan.textContent = '0:00'; progressBar.max = 0; } }
-    function updateAllPlayIcons() { const currentUrl = audio.src; const isPlaying = !audio.paused; document.querySelectorAll('.track-list tr').forEach(row => { const playTd = row.querySelector('.track-play'); if (!playTd) return; const url = row.getAttribute('data-url'); if (url && url !== '#' && currentUrl.includes(url)) { playTd.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>'; } else { playTd.innerHTML = '<i class="fas fa-play"></i>'; } }); }
-    function loadTrack(index, autoplay = true) { if (!currentTracksList.length || index < 0 || index >= currentTracksList.length) return; const track = currentTracksList[index]; if (track.url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } audio.src = track.url; audio.load(); if (autoplay) { audio.play().then(() => { playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); }).catch(() => {}); } else { updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); } }
-    function nextTrack() { if (!currentTracksList.length) return; let ni = currentTrackIndex + 1; if (ni >= currentTracksList.length) ni = 0; loadTrack(ni, true); }
-    function prevTrack() { if (!currentTracksList.length) return; let ni = currentTrackIndex - 1; if (ni < 0) ni = currentTracksList.length - 1; loadTrack(ni, true); }
-    nextBtn.addEventListener('click', nextTrack); prevBtn.addEventListener('click', prevTrack); audio.addEventListener('ended', () => { nextTrack(); updateAllPlayIcons(); });
-    trackSourceSpan.addEventListener('click', () => { const src = trackSourceSpan.textContent; if (src && src !== '—') { if (playlistContent.style.display !== 'block') showPlaylist(); setTimeout(() => { document.querySelectorAll('.accordion-item').forEach(item => { if (item.querySelector('.accordion-title')?.textContent.trim() === src) { const cont = item.querySelector('.accordion-content'); const icon = item.querySelector('.accordion-icon i'); if (cont && !cont.classList.contains('open')) { cont.classList.add('open'); if (icon) { icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } } item.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); }, 100); } });
-    document.querySelectorAll('.track-list tr').forEach(row => { const playTd = row.querySelector('.track-play'); if (playTd) { playTd.addEventListener('click', (e) => { e.stopPropagation(); const url = row.getAttribute('data-url'); const title = row.getAttribute('data-title'); const source = row.getAttribute('data-source'); const dur = parseInt(row.getAttribute('data-duration')) || 0; if (url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } if (audio.src && audio.src.includes(url)) { if (audio.paused) { audio.play().then(() => updateAllPlayIcons()).catch(() => {}); } else { audio.pause(); updateAllPlayIcons(); } } else { const accordion = row.closest('.accordion-item'); let sid = ''; if (accordion) { const hdr = accordion.querySelector('.accordion-header'); if (hdr) sid = hdr.getAttribute('data-accordion'); } if (sid) { const fakeList = [{ url, title, source, duration: dur }]; currentTracksList = fakeList; currentTrackIndex = 0; loadTrack(0, true); } else { const fakeList = [{ url, title, source, duration: dur }]; currentTracksList = fakeList; currentTrackIndex = 0; loadTrack(0, true); } } }); } });
-    playPauseBtn.addEventListener('click', () => { if (audio.paused) audio.play().catch(() => {}); else audio.pause(); });
+    function updateAllPlayIcons() { const currentUrl = audio.src, isPlaying = !audio.paused; document.querySelectorAll('.track-list tr').forEach(row => { const playTd = row.querySelector('.track-play'); if (!playTd) return; const url = row.getAttribute('data-url'); if (url && url !== '#' && currentUrl.includes(url)) { playTd.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>'; } else { playTd.innerHTML = '<i class="fas fa-play"></i>'; } }); }
+    function loadTrack(index, autoplay=true) { if (!currentTracksList.length || index<0 || index>=currentTracksList.length) return; const track = currentTracksList[index]; if(track.url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } audio.src = track.url; audio.load(); if (autoplay) { audio.play().then(() => { playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); }).catch(() => {}); } else { updatePlayerInfo(track.title, track.source, track.duration); currentTrackIndex = index; updateAllPlayIcons(); } }
+    function playTrackFromList(url, title, source, durationSec, sectionId) { const accordion = document.getElementById(`accordion-${sectionId}`); if (!accordion) return; const rows = accordion.querySelectorAll('.track-list tr'); const tracks = []; rows.forEach(row => { const u = row.getAttribute('data-url'); if(u && u !== '#') tracks.push({url:u, title:row.getAttribute('data-title'), source:row.getAttribute('data-source'), duration:parseInt(row.getAttribute('data-duration'))||0}); }); if(!tracks.length) return; currentTracksList = tracks; const idx = tracks.findIndex(t=>t.url===url); if(idx!==-1) { currentTrackIndex=idx; loadTrack(idx,true); } else if(tracks.length) { currentTrackIndex=0; loadTrack(0,true); } }
+    function nextTrack() { if(!currentTracksList.length) return; let ni = currentTrackIndex+1; if(ni>=currentTracksList.length) ni=0; loadTrack(ni,true); }
+    function prevTrack() { if(!currentTracksList.length) return; let ni = currentTrackIndex-1; if(ni<0) ni=currentTracksList.length-1; loadTrack(ni,true); }
+    nextBtn.addEventListener('click',nextTrack); prevBtn.addEventListener('click',prevTrack); audio.addEventListener('ended', () => { nextTrack(); updateAllPlayIcons(); });
+    trackSourceSpan.addEventListener('click',()=>{ const src = trackSourceSpan.textContent; if(src && src!=='—'){ if(playlistContent.style.display!=='block') showPlaylist(); setTimeout(()=>{ document.querySelectorAll('.accordion-item').forEach(item=>{ if(item.querySelector('.accordion-title')?.textContent.trim()===src){ const cont = item.querySelector('.accordion-content'), icon = item.querySelector('.accordion-icon i'); if(cont && !cont.classList.contains('open')){ cont.classList.add('open'); if(icon){ icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } } item.scrollIntoView({behavior:'smooth',block:'start'}); } }); },100); } });
+    document.querySelectorAll('.track-list tr').forEach(row=>{ const playTd = row.querySelector('.track-play'); if(playTd){ playTd.addEventListener('click',(e)=>{ e.stopPropagation(); const url = row.getAttribute('data-url'), title = row.getAttribute('data-title'), source = row.getAttribute('data-source'), dur = parseInt(row.getAttribute('data-duration'))||0; if(url === '#') { alert('Трек пока не добавлен. Скоро появится!'); return; } if (audio.src && audio.src.includes(url)) { if (audio.paused) audio.play().then(() => updateAllPlayIcons()).catch(()=>{}); else audio.pause(); updateAllPlayIcons(); } else { const accordion = row.closest('.accordion-item'); let sid=''; if(accordion){ const hdr = accordion.querySelector('.accordion-header'); if(hdr) sid = hdr.getAttribute('data-accordion'); } if(sid) { playTrackFromList(url, title, source, dur, sid); } else { const fakeList = [{url, title, source, duration: dur}]; currentTracksList = fakeList; currentTrackIndex = 0; loadTrack(0, true); } } }); } });
+    playPauseBtn.addEventListener('click',()=>{ if(audio.paused) audio.play().catch(()=>{}); else audio.pause(); });
     audio.addEventListener('play', () => { playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>'; updateAllPlayIcons(); });
     audio.addEventListener('pause', () => { playPauseBtn.innerHTML = '<i class="fas fa-play"></i>'; updateAllPlayIcons(); });
-    audio.addEventListener('timeupdate', () => { if (audio.duration && !isNaN(audio.duration)) { progressBar.value = audio.currentTime; currentTimeSpan.textContent = formatTime(audio.currentTime); if (currentTrackIndex !== -1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration === 0 && audio.duration) { currentTracksList[currentTrackIndex].duration = audio.duration; durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; } } else { progressBar.value = 0; currentTimeSpan.textContent = '0:00'; } });
-    audio.addEventListener('loadedmetadata', () => { if (audio.duration && !isNaN(audio.duration)) { durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; if (currentTrackIndex !== -1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration === 0) { currentTracksList[currentTrackIndex].duration = audio.duration; } } });
-    progressBar.addEventListener('input', () => { audio.currentTime = progressBar.value; });
-    function preloadFirstTrack() { const firstSectionRows = document.querySelectorAll('#accordion-intro .track-list tr'); if (firstSectionRows.length) { const tracks = []; for (let row of firstSectionRows) { const url = row.getAttribute('data-url'); if (url && url !== '#') { tracks.push({ url: url, title: row.getAttribute('data-title'), source: row.getAttribute('data-source'), duration: parseInt(row.getAttribute('data-duration')) || 0 }); } } if (tracks.length) { currentTracksList = tracks; currentTrackIndex = 0; audio.src = tracks[0].url; audio.load(); updatePlayerInfo(tracks[0].title, tracks[0].source, tracks[0].duration); } } }
-    preloadFirstTrack();
-    document.querySelectorAll('.accordion-header').forEach(header => { header.addEventListener('click', () => { const contId = header.getAttribute('data-accordion'); const content = document.getElementById(`accordion-${contId}`); const icon = header.querySelector('.accordion-icon i'); if (content.classList.contains('open')) { content.classList.remove('open'); icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } else { document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open')); document.querySelectorAll('.accordion-icon i').forEach(i => { i.classList.remove('fa-chevron-up'); i.classList.add('fa-chevron-down'); }); content.classList.add('open'); icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } }); });
+    audio.addEventListener('timeupdate',()=>{ if(audio.duration && !isNaN(audio.duration)){ progressBar.value = audio.currentTime; currentTimeSpan.textContent = formatTime(audio.currentTime); if(currentTrackIndex!==-1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration===0 && audio.duration){ currentTracksList[currentTrackIndex].duration = audio.duration; durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; } } else { progressBar.value=0; currentTimeSpan.textContent='0:00'; } });
+    audio.addEventListener('loadedmetadata',()=>{ if(audio.duration && !isNaN(audio.duration)){ durationSpan.textContent = formatTime(audio.duration); progressBar.max = audio.duration; if(currentTrackIndex!==-1 && currentTracksList[currentTrackIndex] && currentTracksList[currentTrackIndex].duration===0) currentTracksList[currentTrackIndex].duration = audio.duration; } });
+    progressBar.addEventListener('input',()=>{ audio.currentTime = progressBar.value; });
+    document.querySelectorAll('.accordion-header').forEach(header=>{ header.addEventListener('click',()=>{ const contId = header.getAttribute('data-accordion'); const content = document.getElementById(`accordion-${contId}`); const icon = header.querySelector('.accordion-icon i'); if(content.classList.contains('open')){ content.classList.remove('open'); icon.classList.remove('fa-chevron-up'); icon.classList.add('fa-chevron-down'); } else{ document.querySelectorAll('.accordion-content').forEach(c=>c.classList.remove('open')); document.querySelectorAll('.accordion-icon i').forEach(i=>{ i.classList.remove('fa-chevron-up'); i.classList.add('fa-chevron-down'); }); content.classList.add('open'); icon.classList.remove('fa-chevron-down'); icon.classList.add('fa-chevron-up'); } }); });
 
-    // Социальные ленты (сокращённо, но все функции загрузки есть)
+    // --- Социальные ленты и расписание ---
     const socialLinks = [ { name: "YouTube", icon: "fab fa-youtube", url: "https://youtube.com/@sgcurend", platform: "youtube" }, { name: "Telegram", icon: "fab fa-telegram", url: "https://t.me/SGCuRend", platform: "telegram" }, { name: "Twitch", icon: "fab fa-twitch", url: "https://www.twitch.tv/curendplayground", platform: "twitch" }, { name: "TikTok", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@_maxcrd_", platform: "tiktok" }, { name: "VK", icon: "fab fa-vk", url: "https://vk.com/sgcurend", platform: "vk" }, { name: "Дзен", icon: "fas fa-newspaper", url: "https://dzen.ru/geekdigest?share_to=link", platform: "dzen" } ];
+    const MAIN_CHANNEL_ID = "UClfF0VgZ5WFNhwbCzjfDtDg", SECONDARY_CHANNEL_ID = "UCgAVT1p1-BjzVTM848vGAyQ", RSS_API_URL = "https://api.rss2json.com/v1/api.json?rss_url=", DZEN_CHANNEL_URL = "https://dzen.ru/geekdigest", DZEN_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=DzenBridge&url=${encodeURIComponent(DZEN_CHANNEL_URL)}&format=Atom`, TELEGRAM_CHANNELS = [ { username: "SGCuRend", containerId: "telegramFeed", name: "Режиссёрская Куренда" }, { username: "crdwebnews", containerId: "telegramFeedCrd", name: "Паутина Новостей!" } ], VK_GROUP_ID = "sgcurend", VK_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=VkBridge&group_id=${VK_GROUP_ID}&format=Atom`;
     function renderSocialLinks() { const container = document.getElementById("socialLinksContainer"); if (!container) return; let html = ""; for (let link of socialLinks) html += `<a href="${link.url}" target="_blank" class="social-btn" data-platform="${link.platform}"><i class="${link.icon}"></i> ${link.name}</a>`; container.innerHTML = html; }
-    renderSocialLinks();
-    const MAIN_CHANNEL_ID = "UClfF0VgZ5WFNhwbCzjfDtDg";
-    const SECONDARY_CHANNEL_ID = "UCgAVT1p1-BjzVTM848vGAyQ";
-    const RSS_API_URL = "https://api.rss2json.com/v1/api.json?rss_url=";
-    const DZEN_CHANNEL_URL = "https://dzen.ru/geekdigest";
-    const DZEN_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=DzenBridge&url=${encodeURIComponent(DZEN_CHANNEL_URL)}&format=Atom`;
-    const TELEGRAM_CHANNELS = [ { username: "SGCuRend", containerId: "telegramFeed", name: "Режиссёрская Куренда" }, { username: "crdwebnews", containerId: "telegramFeedCrd", name: "Паутина Новостей!" } ];
-    const VK_GROUP_ID = "sgcurend";
-    const VK_RSS_URL = `https://rss-bridge.org/bridge01/?action=display&bridge=VkBridge&group_id=${VK_GROUP_ID}&format=Atom`;
     async function loadYouTubeFeed(channelId, containerId, channelName) { const feedEl = document.getElementById(containerId); if (!feedEl) return; if (!channelId) { feedEl.innerHTML = `<li class="error-placeholder">⚠️ ID канала не указан.</li>`; return; } try { const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`; const response = await fetch(`${RSS_API_URL}${encodeURIComponent(rssUrl)}`); const data = await response.json(); if (data.status !== "ok" || !data.items) throw new Error(); const items = data.items.slice(0, 4); let listHtml = ""; items.forEach(item => { listHtml += `<li><a href="${item.link}" target="_blank">${escapeHtml(item.title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${new Date(item.pubDate).toLocaleDateString("ru-RU")}</span></li>`; }); feedEl.innerHTML = listHtml; } catch (err) { feedEl.innerHTML = `<li class="error-placeholder">❌ Не удалось загрузить видео (${channelName}).</li>`; } }
     async function loadTelegramFeed(username, containerId, channelName) { const feedEl = document.getElementById(containerId); if (!feedEl) return; const sources = [`https://rss-bridge.org/bridge01/?action=display&bridge=TelegramBridge&username=${username}&format=Atom`, `https://tg.i-c-a.su/json/${username}.json`, `https://tcx.app/api/rss/tg/channel/${username}`]; for (const src of sources) { try { const resp = await fetch(src); if (!resp.ok) throw new Error(); let items = []; if (src.includes('.json')) { const data = await resp.json(); items = data.posts || (data.channel?.posts) || []; } else { const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); items = Array.from(xml.querySelectorAll("entry")); } if (items.length) { const posts = items.slice(0, 4); let html = ""; posts.forEach(p => { let title = "Новый пост", link = "#", date = "Недавно"; if (src.includes('.json')) { title = p.text?.substring(0, 60) || "Новый пост"; link = p.link || `https://t.me/${username}/${p.id}`; date = p.date ? new Date(p.date * 1000).toLocaleDateString("ru-RU") : "Недавно"; } else { title = p.querySelector("title")?.textContent?.substring(0, 60) || "Новый пост"; link = p.querySelector("link")?.getAttribute("href") || "#"; const upd = p.querySelector("updated")?.textContent; if (upd) date = new Date(upd).toLocaleDateString("ru-RU"); } html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; return; } } catch(e) { console.warn(e); } } feedEl.innerHTML = `<li class="error-placeholder">📡 Не удалось загрузить ленту. <a href="https://t.me/${username}" target="_blank">Перейти в канал →</a></li>`; }
     async function loadVkFeed() { const feedEl = document.getElementById("vkFeed"); if (!feedEl) return; try { const resp = await fetch(VK_RSS_URL); if (!resp.ok) throw new Error(); const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); const entries = xml.querySelectorAll("entry"); if (!entries.length) throw new Error(); let html = ""; Array.from(entries).slice(0, 4).forEach(entry => { const title = entry.querySelector("title")?.textContent?.substring(0, 60) || "Новая запись"; const link = entry.querySelector("link")?.getAttribute("href") || `https://vk.com/${VK_GROUP_ID}`; const date = entry.querySelector("updated")?.textContent ? new Date(entry.querySelector("updated").textContent).toLocaleDateString("ru-RU") : "Недавно"; html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; } catch(err) { feedEl.innerHTML = `<li class="error-placeholder">📰 Не удалось загрузить записи. <a href="https://vk.com/${VK_GROUP_ID}" target="_blank">Перейти в сообщество →</a></li>`; } }
     async function loadDzenFeed() { const feedEl = document.getElementById("dzenFeed"); if (!feedEl) return; try { const resp = await fetch(DZEN_RSS_URL); if (!resp.ok) throw new Error(); const text = await resp.text(); const xml = new DOMParser().parseFromString(text, "application/xml"); if (xml.querySelector("parsererror")) throw new Error(); const entries = xml.querySelectorAll("entry"); if (!entries.length) throw new Error(); let html = ""; Array.from(entries).slice(0, 4).forEach(entry => { const title = entry.querySelector("title")?.textContent?.substring(0, 60) || "Новая статья"; const link = entry.querySelector("link")?.getAttribute("href") || DZEN_CHANNEL_URL; const date = entry.querySelector("updated")?.textContent ? new Date(entry.querySelector("updated").textContent).toLocaleDateString("ru-RU") : "Недавно"; html += `<li><a href="${link}" target="_blank">${escapeHtml(title)}</a><span class="feed-date"><i class="far fa-calendar-alt"></i> ${date}</span></li>`; }); feedEl.innerHTML = html; } catch(err) { feedEl.innerHTML = `<li class="error-placeholder">📰 Не удалось загрузить статьи. <a href="${DZEN_CHANNEL_URL}" target="_blank">Перейти на канал →</a></li>`; } }
     function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;'); }
-    const scheduleData = [ { day: "Среда", time: "17:00 МСК", label: "видео" }, { day: "Суббота", time: "15:00 МСК", label: "видео" } ];
+    const scheduleData = [ { day: "Среда", time: "17:00 МСК", label: "Стрим / релиз" }, { day: "Суббота", time: "15:00 МСК", label: "Стрим / видео" } ];
     function renderSchedule() { const grid = document.getElementById('scheduleGrid'); if(grid) grid.innerHTML = scheduleData.map(item => `<div class="schedule-card"><div class="schedule-day">${item.day}</div><div class="schedule-time">${item.time}</div><div class="schedule-label">${item.label}</div></div>`).join(''); }
-    renderSchedule();
-    const feedbackForm = document.getElementById('feedbackForm'); const fbStatus = document.getElementById('fbStatus');
-    feedbackForm.addEventListener('submit', (e) => { fbStatus.innerHTML = "Отправка... Пожалуйста, подождите."; setTimeout(() => { fbStatus.innerHTML = "Спасибо! Вы будете перенаправлены."; }, 500); });
+    renderSchedule(); const feedbackForm = document.getElementById('feedbackForm'); const fbStatus = document.getElementById('fbStatus'); feedbackForm.addEventListener('submit', (e) => { fbStatus.innerHTML = "Отправка... Пожалуйста, подождите."; setTimeout(() => { fbStatus.innerHTML = "Спасибо! Вы будете перенаправлены."; }, 500); });
+    
+    // --- Слайдер и чат ---
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slider-item');
     const trackSlider = document.getElementById('sliderTrack');
@@ -1164,209 +984,157 @@
     const youtubeChatBlock = document.getElementById('youtubeChatBlock');
     const twitchChatBlock = document.getElementById('twitchChatBlock');
     const noChatBlock = document.getElementById('noChatBlock');
-    function updateChatBySlide(slideIndex) { if(slideIndex === 1) { youtubeChatBlock.style.display = 'block'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'none'; } else if(slideIndex === 2) { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'block'; noChatBlock.style.display = 'none'; } else { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'block'; } }
-    function updateSlider() { if(trackSlider) trackSlider.style.transform = `translateX(-${currentSlide * 100}%)`; updateChatBySlide(currentSlide); }
-    if(prevSlideBtn && nextSlideBtn && slides.length) { prevSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(); }); nextSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % slides.length; updateSlider(); }); updateSlider(); }
+    function updateChatBySlide(slideIndex) {
+        if(slideIndex === 1) { youtubeChatBlock.style.display = 'block'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'none'; }
+        else if(slideIndex === 2) { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'block'; noChatBlock.style.display = 'none'; }
+        else { youtubeChatBlock.style.display = 'none'; twitchChatBlock.style.display = 'none'; noChatBlock.style.display = 'block'; }
+    }
+    function updateSlider() { trackSlider.style.transform = `translateX(-${currentSlide * 100}%)`; updateChatBySlide(currentSlide); }
+    if(slides.length && trackSlider) {
+        prevSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateSlider(); });
+        nextSlideBtn.addEventListener('click', () => { currentSlide = (currentSlide + 1) % slides.length; updateSlider(); });
+        updateSlider();
+    }
     const commentsHeader = document.getElementById('commentsHeader');
     const commentsContentDiv = document.getElementById('commentsContent');
     const commentsIcon = commentsHeader.querySelector('.comments-icon i');
-    commentsHeader.addEventListener('click', () => { if(commentsContentDiv.classList.contains('open')) { commentsContentDiv.classList.remove('open'); commentsIcon.classList.remove('fa-chevron-up'); commentsIcon.classList.add('fa-chevron-down'); } else { commentsContentDiv.classList.add('open'); commentsIcon.classList.remove('fa-chevron-down'); commentsIcon.classList.add('fa-chevron-up'); updateChatBySlide(currentSlide); } });
-    function loadAllFeeds() { loadYouTubeFeed(MAIN_CHANNEL_ID, "youtubeFeedMain", "SGCuRend"); loadYouTubeFeed(SECONDARY_CHANNEL_ID, "youtubeFeedSecondary", "CuRendPLAY"); TELEGRAM_CHANNELS.forEach(ch => loadTelegramFeed(ch.username, ch.containerId, ch.name)); loadDzenFeed(); loadVkFeed(); }
-    loadAllFeeds();
+    commentsHeader.addEventListener('click', () => {
+        if(commentsContentDiv.classList.contains('open')) {
+            commentsContentDiv.classList.remove('open');
+            commentsIcon.classList.remove('fa-chevron-up');
+            commentsIcon.classList.add('fa-chevron-down');
+        } else {
+            commentsContentDiv.classList.add('open');
+            commentsIcon.classList.remove('fa-chevron-down');
+            commentsIcon.classList.add('fa-chevron-up');
+            updateChatBySlide(currentSlide);
+        }
+    });
+    
+    // --- Автозагрузка первого трека ---
+    function preloadFirstTrack() {
+        const firstSectionRows = document.querySelectorAll('#accordion-intro .track-list tr');
+        if (firstSectionRows.length) {
+            const tracks = [];
+            for (let row of firstSectionRows) {
+                const url = row.getAttribute('data-url');
+                if (url && url !== '#') {
+                    const title = row.getAttribute('data-title');
+                    const source = row.getAttribute('data-source');
+                    const duration = parseInt(row.getAttribute('data-duration')) || 0;
+                    tracks.push({ url, title, source, duration });
+                }
+            }
+            if (tracks.length) {
+                currentTracksList = tracks;
+                currentTrackIndex = 0;
+                audio.src = tracks[0].url;
+                audio.load();
+                updatePlayerInfo(tracks[0].title, tracks[0].source, tracks[0].duration);
+            }
+        }
+    }
+    
+    // ========= ПРИМЕНЕНИЕ НАСТРОЕК ИЗ АДМИН-ПАНЕЛИ =========
+    (function applyAdminSettings() {
+        function applyStreams() {
+            const youtubeUrl = localStorage.getItem('crd_youtube_url');
+            const twitchUrl = localStorage.getItem('crd_twitch_url');
+            const sliderItems = document.querySelectorAll('.slider-item');
+            if (sliderItems.length < 3) return;
+            if (youtubeUrl) {
+                let embedHtml = '';
+                if (youtubeUrl.includes('youtube.com') || youtubeUrl.includes('youtu.be')) {
+                    let videoId = '';
+                    if (youtubeUrl.includes('youtu.be')) videoId = youtubeUrl.split('/').pop().split('?')[0];
+                    else if (youtubeUrl.includes('watch?v=')) videoId = youtubeUrl.split('v=')[1].split('&')[0];
+                    if (videoId) embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=0" allowfullscreen></iframe>`;
+                    else embedHtml = `<iframe src="${youtubeUrl}" allowfullscreen></iframe>`;
+                } else {
+                    embedHtml = `<iframe src="${youtubeUrl}" allowfullscreen></iframe>`;
+                }
+                const ytWrapper = sliderItems[1].querySelector('.video-wrapper');
+                if (ytWrapper) ytWrapper.innerHTML = embedHtml;
+            } else {
+                const defaultYt = `<iframe src="https://www.youtube.com/embed/live_stream?channel=UClfF0VgZ5WFNhwbCzjfDtDg" allowfullscreen></iframe>`;
+                const ytWrapper = sliderItems[1].querySelector('.video-wrapper');
+                if (ytWrapper && ytWrapper.innerHTML !== defaultYt) ytWrapper.innerHTML = defaultYt;
+            }
+            if (twitchUrl) {
+                let channel = twitchUrl.split('twitch.tv/')[1]?.split('/')[0]?.split('?')[0];
+                if (channel) {
+                    const embedHtml = `<iframe src="https://player.twitch.tv/?channel=${channel}&parent=localhost&parent=curend.vercel.app" allowfullscreen></iframe>`;
+                    const twWrapper = sliderItems[2].querySelector('.video-wrapper');
+                    if (twWrapper) twWrapper.innerHTML = embedHtml;
+                }
+            } else {
+                const defaultTw = `<iframe src="https://player.twitch.tv/?channel=curendplayground&parent=localhost&parent=127.0.0.1&autoplay=false" allowfullscreen></iframe>`;
+                const twWrapper = sliderItems[2].querySelector('.video-wrapper');
+                if (twWrapper && twWrapper.innerHTML !== defaultTw) twWrapper.innerHTML = defaultTw;
+            }
+        }
 
-    // ---------- ИГРА "НОЧЬ ТЫКВЕННЫХ БОМБ" (полностью рабочая, код сохранён из предыдущей версии) ----------
-    const canvas = document.getElementById('bombGameCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = 800; canvas.height = 450;
-    let active = false, score = 0, lives = 3, level = 1, anim = null;
-    let enemies = [], projectiles = [];
-    let spiderX = canvas.width/2;
-    let rapidEnd = 0, slowEnd = 0, spreadEnd = 0;
-    let rapidInterval, slowInterval, spreadInterval;
-    let spawnCounter = 0, baseDelay = 38;
-    let bossActive = false, bossHealth = 0, bossMaxHealth = 0, bossX = 0, bossY = 45, bossDir = 2;
-    let bossTimer = null;
-    let bossCycleIndex = 0;
-    let lastBossAttack = 0;
-    let normalCartridgeChance = 0.26;
-    let currentCartridgeChance = 0.26;
-    let pumpkinHitCombo = 0;
-    let superSpreadEnd = 0;
-    let gameStartTime = 0;
-    let gameTimerInterval = null;
-    let gameFinished = false;
-    
-    function getBossHealthByIndex(idx) { const values = [10, 20, 30, 40, 50]; return values[idx % values.length]; }
-    function updateComboDisplay() { const comboElement = document.getElementById('comboCounter'); if (comboElement) comboElement.innerHTML = `🎯 ${pumpkinHitCombo}/20`; }
-    function activateSuperSpread() { if (gameFinished) return; superSpreadEnd = Date.now() + 5000; pumpkinHitCombo = 0; updateComboDisplay(); }
-    function addPumpkinHit() { if (gameFinished) return; if (Date.now() < superSpreadEnd) return; pumpkinHitCombo++; updateComboDisplay(); if (pumpkinHitCombo >= 20) activateSuperSpread(); }
-    function resetCombo() { pumpkinHitCombo = 0; updateComboDisplay(); }
-    function updateGameTimerDisplay() {
-        if (!active || gameFinished) return;
-        const elapsed = (Date.now() - gameStartTime) / 1000;
-        const remaining = Math.max(0, 300 - elapsed);
-        const mins = Math.floor(remaining / 60);
-        const secs = Math.floor(remaining % 60);
-        const timerSpan = document.getElementById('gameTimer');
-        if (timerSpan) timerSpan.innerText = `${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
-        if (remaining <= 0 && !gameFinished) {
-            gameFinished = true; active = false;
-            if (anim) cancelAnimationFrame(anim);
-            if (rapidInterval) clearInterval(rapidInterval);
-            if (slowInterval) clearInterval(slowInterval);
-            if (spreadInterval) clearInterval(spreadInterval);
-            if (bossTimer) clearTimeout(bossTimer);
-            if (gameTimerInterval) clearInterval(gameTimerInterval);
-            drawGame();
-            ctx.fillStyle = 'rgba(0,0,0,0.8)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#ffcc44';
-            ctx.font = 'bold 32px Inter';
-            ctx.fillText('🏆 ВЫ ПОБЕДИЛИ 🏆', canvas.width/2-150, canvas.height/2-40);
-            ctx.font = 'bold 24px Inter';
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText(`Очков: ${score}`, canvas.width/2-70, canvas.height/2+30);
+        function applyTheme(themeMode) {
+            document.body.classList.remove('halloween-theme', 'newyear-theme');
+            if (themeMode === 'halloween') document.body.classList.add('halloween-theme');
+            else if (themeMode === 'newyear') document.body.classList.add('newyear-theme');
         }
-    }
-    function drawSpiderMan(x) {
-        ctx.save();
-        if (Date.now() < superSpreadEnd) { ctx.shadowBlur = 12; ctx.shadowColor = '#aa55ff'; }
-        else if (Date.now() < spreadEnd) { ctx.shadowBlur = 10; ctx.shadowColor = '#3399ff'; }
-        ctx.fillStyle = '#e32119';
-        ctx.fillRect(x-28, canvas.height-48, 56, 32);
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(x-14, canvas.height-40, 8, 10);
-        ctx.fillRect(x+6, canvas.height-40, 8, 10);
-        ctx.fillStyle = '#3366ff';
-        ctx.fillRect(x-38, canvas.height-42, 12, 18);
-        ctx.fillRect(x+26, canvas.height-42, 12, 18);
-        ctx.fillStyle = '#ff0000';
-        ctx.fillRect(x-40, canvas.height-44, 16, 4);
-        ctx.fillRect(x+24, canvas.height-44, 16, 4);
-        ctx.restore();
-    }
-    function drawGreenGoblin(x, y) {
-        ctx.save();
-        ctx.fillStyle = '#8e44ad'; ctx.beginPath(); ctx.moveTo(x-25, y-32); ctx.quadraticCurveTo(x-15, y-60, x-5, y-72); ctx.lineTo(x+5, y-72); ctx.quadraticCurveTo(x+15, y-60, x+25, y-32); ctx.fill();
-        ctx.fillStyle = '#9b59b6'; ctx.beginPath(); ctx.moveTo(x-20, y-30); ctx.quadraticCurveTo(x-10, y-55, x, y-65); ctx.lineTo(x+2, y-65); ctx.quadraticCurveTo(x+10, y-55, x+20, y-30); ctx.fill();
-        ctx.fillStyle = '#7d3c98'; ctx.beginPath(); ctx.moveTo(x-5, y-72); ctx.quadraticCurveTo(x-12, y-80, x-20, y-78); ctx.lineTo(x-15, y-72); ctx.fill();
-        ctx.fillStyle = '#5a2d8c'; ctx.beginPath(); ctx.moveTo(x-35, y-5); ctx.quadraticCurveTo(x, y-45, x+35, y-5); ctx.fill();
-        ctx.fillStyle = '#3c1c5e'; ctx.fillRect(x-28, y-22, 56, 20);
-        ctx.fillStyle = '#3a7734'; ctx.beginPath(); ctx.ellipse(x, y-12, 20, 24, 0, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#2b5a26'; ctx.beginPath(); ctx.ellipse(x, y-8, 16, 20, 0, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#ff3300'; ctx.beginPath(); ctx.ellipse(x-9, y-18, 5, 7, 0, 0, Math.PI*2); ctx.ellipse(x+9, y-18, 5, 7, 0, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#ffff00'; ctx.beginPath(); ctx.arc(x-9, y-17, 2, 0, Math.PI*2); ctx.arc(x+9, y-17, 2, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#000000'; ctx.beginPath(); ctx.arc(x-9, y-16, 1, 0, Math.PI*2); ctx.arc(x+9, y-16, 1, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#1a1a1a'; ctx.beginPath(); ctx.moveTo(x-15, y-27); ctx.lineTo(x-9, y-24); ctx.lineTo(x-3, y-27); ctx.fill(); ctx.beginPath(); ctx.moveTo(x+3, y-27); ctx.lineTo(x+9, y-24); ctx.lineTo(x+15, y-27); ctx.fill();
-        ctx.fillStyle = '#4a2a1e'; ctx.beginPath(); ctx.moveTo(x-20, y-28); ctx.lineTo(x-32, y-38); ctx.lineTo(x-20, y-32); ctx.fill(); ctx.beginPath(); ctx.moveTo(x+20, y-28); ctx.lineTo(x+32, y-38); ctx.lineTo(x+20, y-32); ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y-8, 13, 0.15, Math.PI - 0.15); ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.stroke();
-        ctx.fillStyle = '#8b0000'; ctx.fillRect(x-8, y-8, 16, 6);
-        ctx.fillStyle = '#ffffcc'; ctx.beginPath(); ctx.moveTo(x-6, y-6); ctx.lineTo(x-3, y-1); ctx.lineTo(x-1, y-6); ctx.fill(); ctx.beginPath(); ctx.moveTo(x+6, y-6); ctx.lineTo(x+3, y-1); ctx.lineTo(x+1, y-6); ctx.fill();
-        ctx.fillStyle = '#ff8c00'; ctx.beginPath(); ctx.ellipse(x+28, y-8, 8, 10, 0, 0, Math.PI*2); ctx.fill();
-        ctx.fillStyle = '#4a5d23'; ctx.fillRect(x+24, y-16, 8, 6);
-        ctx.fillStyle = '#ffcc00'; for(let i=0;i<3;i++) ctx.fillRect(x+26 + i*2, y-10, 1, 5);
-        ctx.fillStyle = '#aa0000'; ctx.fillRect(x-40, y-40, 80, 8);
-        ctx.fillStyle = '#00ff00'; let percent = bossHealth / bossMaxHealth; ctx.fillRect(x-40, y-40, 80 * percent, 8);
-        ctx.fillStyle = 'white'; ctx.font = 'bold 12px Inter'; ctx.fillText(`${bossHealth}/${bossMaxHealth}`, x-25, y-43);
-        ctx.restore();
-    }
-    function drawEnemy(e) {
-        if(e.type === 'pumpkin') {
-            ctx.save(); ctx.shadowBlur = 6; const grad = ctx.createLinearGradient(e.x-8, e.y-8, e.x+8, e.y+8); grad.addColorStop(0, '#ffaa33'); grad.addColorStop(1, '#ff5500');
-            ctx.fillStyle = grad; ctx.beginPath(); ctx.ellipse(e.x, e.y, e.radius, e.radius*1.1, 0, 0, Math.PI*2); ctx.fill();
-            ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(e.x, e.y, e.radius, e.radius*1.1, 0, 0, Math.PI*2); ctx.stroke();
-            ctx.fillStyle = '#4a5d23'; ctx.fillRect(e.x-4, e.y-e.radius-2, 8, 6);
-            ctx.fillStyle = '#ffffcc'; for(let i=0;i<4;i++) { let a = i*Math.PI/2; let x1 = e.x + Math.cos(a)*e.radius*0.6; let y1 = e.y + Math.sin(a)*e.radius*0.6; ctx.fillRect(x1-2, y1-2, 4, 4); }
-            ctx.restore();
-        } else if(e.type === 'cartridge_red') { ctx.fillStyle = '#ff0000'; ctx.fillRect(e.x-10, e.y-10, 20, 20); ctx.fillStyle = '#cc0000'; ctx.beginPath(); ctx.moveTo(e.x, e.y-14); ctx.lineTo(e.x-8, e.y); ctx.lineTo(e.x+8, e.y); ctx.fill(); ctx.fillStyle = '#ffff00'; ctx.fillRect(e.x-4, e.y-4, 8, 8); }
-        else if(e.type === 'cartridge_blue') { ctx.fillStyle = '#3366ff'; ctx.fillRect(e.x-10, e.y-10, 20, 20); ctx.fillStyle = '#0000cc'; ctx.beginPath(); ctx.moveTo(e.x, e.y-14); ctx.lineTo(e.x-8, e.y); ctx.lineTo(e.x+8, e.y); ctx.fill(); ctx.fillStyle = '#ffffff'; ctx.fillRect(e.x-4, e.y-4, 8, 8); }
-        else if(e.type === 'cartridge_yellow') { ctx.fillStyle = '#ffcc00'; ctx.fillRect(e.x-10, e.y-10, 20, 20); ctx.fillStyle = '#cc9900'; ctx.beginPath(); ctx.moveTo(e.x, e.y-14); ctx.lineTo(e.x-8, e.y); ctx.lineTo(e.x+8, e.y); ctx.fill(); ctx.fillStyle = '#000'; ctx.fillRect(e.x-4, e.y-4, 8, 8); }
-    }
-    function drawProjectile(p) { ctx.fillStyle = '#e0e0e0'; ctx.shadowBlur = 4; ctx.beginPath(); ctx.arc(p.x, p.y, 5, 0, Math.PI*2); ctx.fill(); ctx.shadowBlur = 0; }
-    function drawGame() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#1a2a1f'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-        enemies.forEach(e => drawEnemy(e));
-        projectiles.forEach(p => drawProjectile(p));
-        drawSpiderMan(spiderX);
-        if(bossActive) drawGreenGoblin(bossX, bossY);
-    }
-    function shootSingle(x, angleOffset = 0) { if(!active || gameFinished) return; let speedY = 9; let speedX = Math.sin(angleOffset) * 3.5; projectiles.push({ x, y: canvas.height-50, radius: 5, speedX, speedY }); }
-    function shootSpread() { shootSingle(spiderX, -0.5); shootSingle(spiderX, 0); shootSingle(spiderX, 0.5); }
-    function shootSuperSpread() { for(let i=0;i<5;i++) setTimeout(() => { if(active && !gameFinished && Date.now() < superSpreadEnd) shootSpread(); }, i*40); }
-    function shootNormal() { shootSingle(spiderX, 0); }
-    function shootRapid() { for(let i=0;i<5;i++) setTimeout(() => shootNormal(), i*40); }
-    
-    function handleShootAt(clientX, clientY) {
-        if(!active || gameFinished) return;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const clickX = (clientX - rect.left) * scaleX;
-        if(Math.abs(clickX - spiderX) < 45) {
-            const now = Date.now();
-            if(now < superSpreadEnd) shootSuperSpread();
-            else if(now < rapidEnd) shootRapid();
-            else if(now < spreadEnd) shootSpread();
-            else shootNormal();
+
+        function applyTrackOrder(sectionId) {
+            const savedOrder = localStorage.getItem(`crd_track_order_${sectionId}`);
+            if (!savedOrder) return;
+            const orderArray = JSON.parse(savedOrder);
+            const accordionContent = document.getElementById(`accordion-${sectionId}`);
+            if (!accordionContent) return;
+            const table = accordionContent.querySelector('.track-list');
+            if (!table) return;
+            const rows = Array.from(table.querySelectorAll('tr'));
+            const trackMap = new Map();
+            rows.forEach(row => {
+                const title = row.getAttribute('data-title');
+                if (title) trackMap.set(title, row);
+            });
+            const newRows = [];
+            for (let title of orderArray) {
+                if (trackMap.has(title)) newRows.push(trackMap.get(title));
+            }
+            for (let [title, row] of trackMap.entries()) {
+                if (!orderArray.includes(title)) newRows.push(row);
+            }
+            for (let row of newRows) table.appendChild(row);
         }
+
+        function applyAllOrders() {
+            const sections = ['intro', 'scarlet', 'devil', 'moon', 'mercs', 'rise'];
+            for (let section of sections) applyTrackOrder(section);
+        }
+
+        function loadAdminSettings() {
+            applyStreams();
+            const themeMode = localStorage.getItem('crd_theme_mode');
+            if (themeMode) applyTheme(themeMode);
+            applyAllOrders();
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key && (e.key.startsWith('crd_track_order_') || e.key === 'crd_theme_mode' || e.key === 'crd_youtube_url' || e.key === 'crd_twitch_url')) {
+                loadAdminSettings();
+            }
+        });
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadAdminSettings);
+        else loadAdminSettings();
+    })();
+
+    function init() { 
+        renderSocialLinks(); 
+        loadDzenFeed(); 
+        loadVkFeed(); 
+        loadYouTubeFeed(MAIN_CHANNEL_ID, "youtubeFeedMain", "SGCuRend"); 
+        loadYouTubeFeed(SECONDARY_CHANNEL_ID, "youtubeFeedSecondary", "CuRendPLAY"); 
+        TELEGRAM_CHANNELS.forEach(ch => loadTelegramFeed(ch.username, ch.containerId, ch.name));
+        preloadFirstTrack();
     }
-    canvas.addEventListener('click', (e) => { handleShootAt(e.clientX, e.clientY); });
-    canvas.addEventListener('mousemove', (e) => {
-        if(!active || gameFinished) return;
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        let mouseX = (e.clientX - rect.left) * scaleX;
-        mouseX = Math.min(Math.max(mouseX, 40), canvas.width-40);
-        spiderX = mouseX;
-    });
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        handleShootAt(touch.clientX, touch.clientY);
-    });
-    canvas.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        if(!active || gameFinished) return;
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        let touchX = (touch.clientX - rect.left) * scaleX;
-        touchX = Math.min(Math.max(touchX, 40), canvas.width-40);
-        spiderX = touchX;
-    });
-    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
-    
-    function updateTimers() { let now = Date.now(); document.getElementById('rapidFireTimer').innerHTML = (now < rapidEnd) ? `🔥 ${Math.ceil((rapidEnd-now)/1000)}с` : '⚡'; document.getElementById('slowMotionTimer').innerHTML = (now < slowEnd) ? `🐢 ${Math.ceil((slowEnd-now)/1000)}с` : '⏳'; let spreadSpan = document.getElementById('spreadTimer'); if(now < spreadEnd) spreadSpan.innerHTML = `🔱 ${Math.ceil((spreadEnd-now)/1000)}с`; else spreadSpan.innerHTML = '🔱'; }
-    function activateRapid() { rapidEnd = Date.now()+5000; if(rapidInterval) clearInterval(rapidInterval); rapidInterval = setInterval(updateTimers,200); }
-    function activateSlow() { slowEnd = Date.now()+5000; if(slowInterval) clearInterval(slowInterval); slowInterval = setInterval(updateTimers,200); currentCartridgeChance = 0.1; setTimeout(() => { if(Date.now() >= slowEnd) currentCartridgeChance = normalCartridgeChance; }, 5000); }
-    function activateSpread() { spreadEnd = Date.now()+5000; if(spreadInterval) clearInterval(spreadInterval); spreadInterval = setInterval(updateTimers,200); }
-    function startBoss() { if(bossActive || gameFinished) return; bossActive = true; bossMaxHealth = getBossHealthByIndex(bossCycleIndex); bossHealth = bossMaxHealth; bossX = 50; bossY = 45; bossDir = 2; if(bossTimer) clearTimeout(bossTimer); bossTimer = setTimeout(() => { if(bossActive && !gameFinished) bossActive = false; }, 20000); ctx.font = 'bold 20px Inter'; ctx.fillStyle = '#ff3300'; ctx.fillText(`ЗЛОЙ ГОБЛИН (${bossMaxHealth} HP)`, canvas.width/2-150, 70); setTimeout(()=>drawGame(), 1500); }
-    function updateGame() {
-        if(!active || gameFinished) return;
-        updateTimers(); let now = Date.now(); let speedMult = (now < slowEnd) ? 0.5 : 1.0; let delay = Math.max(28, baseDelay - Math.floor(score/20)*2);
-        if(!bossActive) { spawnCounter++; if(spawnCounter >= delay) { spawnCounter = 0; let rad = 14; let spd = (1.8 + level*0.3) * speedMult; let r = Math.random(); let type = 'pumpkin'; if(r < currentCartridgeChance) { let sub = Math.random(); if(sub < 0.33) type = 'cartridge_red'; else if(sub < 0.66) type = 'cartridge_blue'; else type = 'cartridge_yellow'; } enemies.push({ x: 30+Math.random()*(canvas.width-60), y: -rad, radius: rad, speed: spd, type, diagonal: false }); } }
-        let newLevel = Math.floor(score/10)+1; if(newLevel > level) { level = newLevel; document.getElementById('bombLevel').innerText = level; } if(level % 5 === 0 && level > 0 && !bossActive && score>0 && !gameFinished) startBoss();
-        if(bossActive) { bossX += bossDir; if(bossX < 50 || bossX > canvas.width-50) bossDir = -bossDir; if(now - lastBossAttack > 400) { lastBossAttack = now; const angles = [-0.7, 0, 0.7]; for(let ang of angles) { let speedX = Math.sin(ang) * 4.2; let speedY = 3.0; enemies.push({ x: bossX, y: bossY + 15, radius: 14, speedX, speedY, type: 'pumpkin', diagonal: true }); } } }
-        for(let i=0;i<projectiles.length;i++) { let p = projectiles[i]; p.x += p.speedX || 0; p.y -= p.speedY; if(p.x+5 < 0 || p.x-5 > canvas.width || p.y+5 < 0) { projectiles.splice(i,1); i--; } }
-        if(bossActive) { for(let i=0;i<projectiles.length;i++) { let p = projectiles[i]; if(Math.abs(p.x - bossX) < 30 && Math.abs(p.y - bossY) < 40) { bossHealth--; projectiles.splice(i,1); if(bossHealth <= 0) { bossActive = false; score += 10; lives = Math.min(lives+2, 9); document.getElementById('bombScore').innerText = score; document.getElementById('bombLives').innerText = lives; if(bossTimer) clearTimeout(bossTimer); bossCycleIndex = (bossCycleIndex + 1) % 5; } break; } } }
-        if(bossActive) { const spiderLeft = spiderX-32, spiderRight = spiderX+32, spiderTop = canvas.height-54, spiderBottom = canvas.height-14; const bossLeft = bossX-35, bossRight = bossX+35, bossTop = bossY-45, bossBottom = bossY+15; const collideBoss = (spiderRight > bossLeft && spiderLeft < bossRight && spiderBottom > bossTop && spiderTop < bossBottom); if(collideBoss) { lives--; document.getElementById('bombLives').innerText = lives; if(lives <= 0) { gameOver(); return; } bossX += (bossX < spiderX) ? -30 : 30; bossX = Math.min(Math.max(bossX, 40), canvas.width-40); resetCombo(); } }
-        for(let i=0;i<enemies.length;i++) { let e = enemies[i]; if(e.diagonal) { e.x += e.speedX; e.y += e.speedY; } else { e.y += e.speed; }
-            const spiderLeft = spiderX-32, spiderRight = spiderX+32, spiderTop = canvas.height-54, spiderBottom = canvas.height-14; const enemyLeft = e.x-e.radius, enemyRight = e.x+e.radius, enemyTop = e.y-e.radius, enemyBottom = e.y+e.radius; const collides = (enemyRight > spiderLeft && enemyLeft < spiderRight && enemyBottom > spiderTop && enemyTop < spiderBottom);
-            if(collides) { if(e.type === 'pumpkin') { lives--; document.getElementById('bombLives').innerText = lives; if(lives <= 0) { gameOver(); return; } resetCombo(); } else { if(e.type === 'cartridge_red') { score+=2; lives=Math.min(lives+1,9); activateRapid(); } else if(e.type === 'cartridge_blue') { score+=2; lives=Math.min(lives+1,9); activateSpread(); } else if(e.type === 'cartridge_yellow') { score+=2; lives=Math.min(lives+1,9); activateSlow(); } document.getElementById('bombScore').innerText = score; document.getElementById('bombLives').innerText = lives; } enemies.splice(i,1); i--; continue; }
-            let outOfBounds = false; if(e.diagonal) { if(e.x + e.radius < 0 || e.x - e.radius > canvas.width || e.y + e.radius > canvas.height) outOfBounds = true; } else { if(e.y + e.radius >= canvas.height - 10) outOfBounds = true; } if(outOfBounds) { if(!bossActive && e.type === 'pumpkin') { lives--; document.getElementById('bombLives').innerText = lives; if(lives <= 0) { gameOver(); return; } resetCombo(); } enemies.splice(i,1); i--; continue; }
-            let hit = false; for(let j=0;j<projectiles.length;j++) { let p = projectiles[j]; if(Math.hypot(p.x - e.x, p.y - e.y) < e.radius + p.radius) { hit = true; projectiles.splice(j,1); if(e.type === 'pumpkin') { score++; addPumpkinHit(); } else if(e.type === 'cartridge_red') { score+=2; lives=Math.min(lives+1,9); activateRapid(); } else if(e.type === 'cartridge_blue') { score+=2; lives=Math.min(lives+1,9); activateSpread(); } else if(e.type === 'cartridge_yellow') { score+=2; lives=Math.min(lives+1,9); activateSlow(); } document.getElementById('bombScore').innerText = score; document.getElementById('bombLives').innerText = lives; let lvl = Math.floor(score/10)+1; if(lvl > level) { level = lvl; document.getElementById('bombLevel').innerText = level; } enemies.splice(i,1); i--; break; } } }
-        drawGame(); anim = requestAnimationFrame(updateGame);
-    }
-    function gameOver() { if(active && !gameFinished) { active = false; gameFinished = true; if(rapidInterval) clearInterval(rapidInterval); if(slowInterval) clearInterval(slowInterval); if(spreadInterval) clearInterval(spreadInterval); if(bossTimer) clearTimeout(bossTimer); if(gameTimerInterval) clearInterval(gameTimerInterval); cancelAnimationFrame(anim); drawGame(); ctx.fillStyle = 'rgba(0,0,0,0.8)'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = '#ff4444'; ctx.font = 'bold 32px Inter'; ctx.fillText('💀 ВЫ ПРОИГРАЛИ 💀', canvas.width/2-160, canvas.height/2-40); ctx.font = 'bold 24px Inter'; ctx.fillStyle = '#ffffff'; ctx.fillText(`Очков: ${score}`, canvas.width/2-70, canvas.height/2+30); } }
-    function startGame() {
-        if(gameTimerInterval) clearInterval(gameTimerInterval); if(anim) cancelAnimationFrame(anim); if(rapidInterval) clearInterval(rapidInterval); if(slowInterval) clearInterval(slowInterval); if(spreadInterval) clearInterval(spreadInterval); if(bossTimer) clearTimeout(bossTimer);
-        active = true; gameFinished = false; score = 0; lives = 3; level = 1; enemies = []; projectiles = []; spawnCounter = 0; spiderX = canvas.width/2; rapidEnd = 0; slowEnd = 0; spreadEnd = 0; superSpreadEnd = 0; pumpkinHitCombo = 0; updateComboDisplay(); bossActive = false; bossCycleIndex = 0; lastBossAttack = 0; currentCartridgeChance = normalCartridgeChance;
-        document.getElementById('bombScore').innerText = '0'; document.getElementById('bombLives').innerText = '3'; document.getElementById('bombLevel').innerText = '1'; updateTimers(); gameStartTime = Date.now(); gameTimerInterval = setInterval(() => updateGameTimerDisplay(), 200); updateGameTimerDisplay(); anim = requestAnimationFrame(updateGame);
-    }
-    function resetGame() { if(gameTimerInterval) clearInterval(gameTimerInterval); if(anim) cancelAnimationFrame(anim); if(rapidInterval) clearInterval(rapidInterval); if(slowInterval) clearInterval(slowInterval); if(spreadInterval) clearInterval(spreadInterval); if(bossTimer) clearTimeout(bossTimer); active = false; gameFinished = false; score = 0; lives = 3; level = 1; enemies = []; projectiles = []; spiderX = canvas.width/2; rapidEnd = 0; slowEnd = 0; spreadEnd = 0; superSpreadEnd = 0; pumpkinHitCombo = 0; updateComboDisplay(); bossActive = false; bossCycleIndex = 0; lastBossAttack = 0; currentCartridgeChance = normalCartridgeChance; document.getElementById('bombScore').innerText = '0'; document.getElementById('bombLives').innerText = '3'; document.getElementById('bombLevel').innerText = '1'; updateTimers(); drawGame(); ctx.fillStyle = '#ff0033'; ctx.font = '18px Inter'; ctx.fillText('Нажми "Старт"', canvas.width/2-70, canvas.height/2); document.getElementById('gameTimer').innerText = '05:00'; }
-    document.getElementById('startBombBtn').addEventListener('click', startGame);
-    document.getElementById('resetBombBtn').addEventListener('click', resetGame);
-    resetGame();
+    init();
 </script>
 </body>
 </html>
